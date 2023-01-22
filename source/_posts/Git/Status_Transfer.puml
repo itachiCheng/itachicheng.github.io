@@ -1,0 +1,11 @@
+@startuml
+participant Untracked order 1
+participant Unmodified order 2
+participant Modified order 3
+participant Staged order 4
+Untracked -> Staged: Add the file
+Unmodified -> Untracked: Remove the file
+Unmodified -> Modified: Edit the file
+Modified -> Staged: Save the file
+Unmodified <- Staged: Commit
+@enduml
