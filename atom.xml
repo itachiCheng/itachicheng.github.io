@@ -410,6 +410,33 @@
   </entry>
   
   <entry>
+    <title>Deep-Learning</title>
+    <link href="https://itachicheng.github.io/Deep-Learning/"/>
+    <id>https://itachicheng.github.io/Deep-Learning/</id>
+    <published>2022-01-23T11:17:43.000Z</published>
+    <updated>2023-03-04T03:31:22.772Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Reasons-to-study-neural-computation">Reasons to study neural computation</h3><ul><li><h4 id="To-understand-how-the-brain-actually-works">To understand how the brain actually works.</h4><ul><li>Its very big and very complicated and made of stuff that dies when you poke it around. So we need to use computer simulations.</li></ul></li><li><h4 id="To-understand-a-style-of-parallel-computation-inspired-by-neurons-and-their-adaptive-connection">To understand a style of parallel computation inspired by neurons and their adaptive connection.</h4><ul><li>Very different style from sequential computation.<ul><li>should be good for things that brains are good at (e.g. vision)</li><li>should be bad for things that brains are bad at (e.g. 23 * 71)</li></ul></li></ul></li><li><h4 id="To-solve-practical-problems-by-using-novel-learning-algorithms-inspired-by-the-brain">To solve practical problems by using novel learning algorithms inspired by the brain</h4><ul><li>Learning algorithms can be very useful even if they are not how he brain actually works.</li></ul></li></ul><h3 id="A-typical-cortical-neuron">A typical cortical neuron</h3><ul><li><h4 id="Gross-physical-structure">Gross physical structure</h4><ul><li>There is one axon(轴突) that branches</li><li>There is a dendritic tree(树突) that collects input from other neurons.</li></ul></li><li><h4 id="Axons-typically-contact-dendritic-trees-at-synapses">Axons typically contact dendritic trees at synapses</h4><ul><li>A spike of activity in the axon causes charge to be injected into the post-synaptic neuron.</li></ul></li><li><h4 id="Spike-generation">Spike generation</h4><ul><li>There is an axon hillock that generates outgoing spikes(尖峰) whenever enough charge has flowed in at synapses to depolarize the cell membrane</li></ul></li></ul><h3 id="Synapses">Synapses</h3><ul><li><h4 id="When-a-spike-of-activity-travels-along-an-axon-and-arrives-at-a-synapse-it-causes-vesicles-of-transmitter-chemical-to-be-released">When a spike of activity travels along an axon and arrives at a synapse it causes vesicles of transmitter chemical to be released.</h4><ul><li>There are several kinds of transmitter.</li></ul></li><li><h4 id="The-transmitter-molecules-diffuse-across-the-synaptic-cleft-and-bind-to-receptor-molecules-in-the-membrane-of-the-post-synaptic-neuron-thus-changing-their-shape">The transmitter molecules diffuse across the synaptic cleft and bind to receptor molecules in the membrane of the post-synaptic neuron thus changing their shape.</h4><ul><li>This opens up holes that allow specific ions in or out and that changes their state of depolarization</li></ul></li></ul><h3 id="How-synapses-adapt">How synapses adapt</h3><ul><li><h4 id="The-effectiveness-of-the-synapse-can-be-changed">The effectiveness of the synapse can be changed</h4><ul><li>vary the number of vesicles of transmitter</li><li>vary the number of receptor molecules</li></ul></li><li><h4 id="Synapses-are-slow-but-they-have-advantages-over-RAM">Synapses are slow, but they have advantages over RAM</h4><ul><li>They are very small and very low-power.</li><li>They adapt using locally available signals<ul><li>But what rules do they use to decide how to change?</li></ul></li></ul></li></ul><h3 id="How-the-brain-works-on-one-slide">How the brain works on one slide!</h3><ul><li><h4 id="Each-neuron-receives-inputs-from-other-neurons">Each neuron receives inputs from other neurons</h4><ul><li><p>A few neurons also connect to receptors(受体).</p></li><li><p>Cortical neurons use spikes to communicate.</p></li></ul></li><li><h4 id="The-effect-of-each-input-line-on-the-neuron-is-controlled-by-a-synaptic-weight">The effect of each input line on the neuron is controlled by a synaptic weight</h4><ul><li>The weights can be positive or negative.</li></ul></li><li><h4 id="The-synaptic-weights-adapt-so-that-the-whole-network-learns-to-perform-useful-computations">The synaptic weights adapt so that the whole network learns to perform useful computations</h4><ul><li>Recognizing objects, understanding language, making plans, controlling the body.</li></ul></li><li><p>You have about 10^11  neurons each with about  10^4 weights.</p><ul><li>A huge number of weights can affect the computation in a very short time. Much better bandwidth than a workstation.</li></ul></li></ul><h3 id="Modularity-and-the-brain">Modularity and the brain</h3><ul><li><p>Different bits of the cortex(大脑皮层) do different things.</p><ul><li><p>Local damage to the brain has specific effects.</p></li><li><p>Specific tasks increase the blood flow to specific regions.</p></li></ul></li><li><p>But cortex looks pretty much the same all over.</p><ul><li>Early brain damage makes functions relocate.</li></ul></li><li><p>Cortex is made of general purpose stuff that has the ability to turn into special purpose hardware in response to experience.</p><ul><li><p>This gives rapid parallel computation plus flexibility.</p></li><li><p>Conventional computers get flexibility by having stored sequential programs, but this requires very fast central processors to perform long sequential computations.</p></li></ul></li></ul><h3 id="Idealized-neurons">Idealized neurons</h3><ul><li><p>To model things we have to idealize them (e.g. atoms)</p><ul><li><p>Idealization removes complicated details that are not essential for understanding the main principles.</p></li><li><p>It allows us to apply mathematics and to make analogies to other, familiar systems.</p></li></ul></li></ul><p>–Once we understand the basic principles, its easy to add complexity to make the model more faithful.</p><ul><li>It is often worth understanding models that are known to be wrong (but we must not forget that they are wrong!)<ul><li>E.g. neurons that communicate real values rather than discrete spikes of activity.</li></ul></li></ul><center>$y=b+\sum^{}_{i}{x_iw_i}$</center>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;Reasons-to-study-neural-computation&quot;&gt;Reasons to study neural computation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h4 id=&quot;To-understand-how-the-brain-actually</summary>
+      
+    
+    
+    
+    <category term="Computer Science" scheme="https://itachicheng.github.io/categories/Computer-Science/"/>
+    
+    
+    <category term="Machine Learning" scheme="https://itachicheng.github.io/tags/Machine-Learning/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Treasure</title>
     <link href="https://itachicheng.github.io/Util/"/>
     <id>https://itachicheng.github.io/Util/</id>
@@ -455,30 +482,6 @@
     
     
     <category term="SQL" scheme="https://itachicheng.github.io/categories/SQL/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Docker</title>
-    <link href="https://itachicheng.github.io/Docker/"/>
-    <id>https://itachicheng.github.io/Docker/</id>
-    <published>2022-01-09T14:55:44.000Z</published>
-    <updated>2023-01-29T11:30:10.728Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><a href="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe">Download Docker</a><br>docker 下载地址，点击OK即可，稍等完成下载。<br><img src="docker_install_1.png" alt="img.png"></li><li>Enable the WSL 2 feature on Windows</li></ul><p>最近工作中接触了docker，开始试着敲了一些docker指令。</p><p><code>docker images</code>：列出docker镜像</p><p><code>docker ps</code>: 列出当前正在运行的docker容器</p><p><code>docker cp .../ .../ </code>：从宿主机或docker容器中拷贝文件到docker容器或宿主机当中</p><p><code>docker start containerId</code> ：启动docker容器</p><p><code>docker attach containerId</code>：进入docker容器</p><p>我想这相当于最基本的查看操作，同时借鉴面向对象中类和实例的关系，对docker的理解停留在抽象层。想钻研其背景，多看总是很好的途径。</p><center>卷一</center><h6 id="Docker-versus-virtual-machines">Docker versus virtual machines</h6><p><code>Docker is just cgroups and namespace wrappedd up.</code> 这句话出自<a href="https://www.docker.com/blog/investing-in-performance-trust-and-great-experiences-for-developers/">JUSTIN CORMACK</a> ，他认为从docker这九年来发展来看，重要的远不止这些。<code>docker run -it ubuntu</code>The time-to-magic is so short, and there is so much you can build on from there.<br>的确，现在围绕Docker, Kubernetes 和 更加广泛的云原生运动正在展开。</p><p>Docker处于现代软件供应链的核心，并且有三个方向值得努力——Performance、Trust and Experience.</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe&quot;&gt;Download Docker&lt;/a&gt;&lt;br&gt;
-docker 下载地址，点击OK即可，稍等完</summary>
-      
-    
-    
-    
-    <category term="Docker" scheme="https://itachicheng.github.io/categories/Docker/"/>
     
     
   </entry>
