@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/leetcode-graph/</loc>
+    <loc>https://itachicheng.github.io/leetcode-array/</loc>
     
     <lastmod>2023-12-19</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/leetcode-array/</loc>
+    <loc>https://itachicheng.github.io/leetcode-graph/</loc>
     
     <lastmod>2023-12-19</lastmod>
     
@@ -155,15 +155,6 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Flask/</loc>
-    
-    <lastmod>2023-12-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://itachicheng.github.io/Docker/</loc>
     
     <lastmod>2023-12-19</lastmod>
@@ -173,7 +164,16 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Autobiography/</loc>
+    <loc>https://itachicheng.github.io/Flask/</loc>
+    
+    <lastmod>2023-12-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/Class%20Diagram/</loc>
     
     <lastmod>2023-12-19</lastmod>
     
@@ -191,7 +191,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Class%20Diagram/</loc>
+    <loc>https://itachicheng.github.io/Autobiography/</loc>
     
     <lastmod>2023-12-19</lastmod>
     
@@ -209,14 +209,14 @@
 
   
   <url>
-    <loc>https://itachicheng.github.io/tags/Autobiography/</loc>
+    <loc>https://itachicheng.github.io/tags/NLP/</loc>
     <lastmod>2024-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/tags/NLP/</loc>
+    <loc>https://itachicheng.github.io/tags/Autobiography/</loc>
     <lastmod>2024-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -232,7 +232,14 @@
 
   
   <url>
-    <loc>https://itachicheng.github.io/categories/Yesterday/</loc>
+    <loc>https://itachicheng.github.io/categories/Software-Engineering/</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/categories/Machine-Learning/</loc>
     <lastmod>2024-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -240,6 +247,13 @@
   
   <url>
     <loc>https://itachicheng.github.io/categories/Hexo-Guide/</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/categories/Yesterday/</loc>
     <lastmod>2024-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -267,20 +281,6 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/categories/Data-Mining/</loc>
-    <lastmod>2024-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://itachicheng.github.io/categories/Machine-Learning/</loc>
-    <lastmod>2024-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://itachicheng.github.io/categories/Tool/</loc>
     <lastmod>2024-01-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -288,21 +288,21 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/categories/Life/</loc>
-    <lastmod>2024-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://itachicheng.github.io/categories/Software-Engineering/</loc>
-    <lastmod>2024-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://itachicheng.github.io/categories/Coding/</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/categories/Data-Mining/</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/categories/Life/</loc>
     <lastmod>2024-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
