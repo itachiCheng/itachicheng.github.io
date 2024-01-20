@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>设计模式 | 图灵先生的光</title><meta name="author" content="ChengQiang"><meta name="copyright" content="ChengQiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="面向对象设计五大心法（The Heart）  The Single Responsibility Principle(单一职责原则)——SRP The Open Closed Principle(开放封闭原则)——OCP The Liskov Substitution Principle(Lisk"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://itachicheng.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '设计模式',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-19 08:38:53'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="图灵先生的光" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/Ulchiha.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design_pattern.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="图灵先生的光"><span class="site-name">图灵先生的光</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">设计模式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-12-19T16:38:53.758Z" title="Created 2023-12-19 08:38:53">2023-12-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-12-19T16:38:53.758Z" title="Updated 2023-12-19 08:38:53">2023-12-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Software-Engineering/">Software Engineering</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="设计模式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="design_pattern.jpg" alt=""></p>
+<h3 id="面向对象设计五大心法（The-Heart）">面向对象设计五大心法（The Heart）</h3>
+<ul>
+<li>The Single Responsibility Principle(单一职责原则)——SRP</li>
+<li>The Open Closed Principle(开放封闭原则)——OCP</li>
+<li>The Liskov Substitution Principle(Liskov替换原则)——LSP</li>
+<li>The Interface Segregation Principle(接口隔离原则)——ISP</li>
+<li>The Dependency Inversion Principle(依赖倒置原则)——DIP</li>
+</ul>
+<p><strong>SOLID = High Conhesion Loose Couple</strong></p>
+<h4 id="单一职责原则">单一职责原则</h4>
+<h5 id="6-Responsibilities-of-Object">6 Responsibilities of Object</h5>
+<ul>
+<li>Information holder<br>
+作为存储对象并提供对象信息给其他对象</li>
+<li>Interfacer<br>
+在系统的各部分之间转化信息（或请求）</li>
+<li>Structurer<br>
+维护对象之间的结构关系</li>
+<li>Service provider<br>
+执行工作处理并提供给其他对象</li>
+<li>Controller<br>
+控制决策一系列的任务处理</li>
+<li>Coordinator<br>
+不作工作处理，只代理工作到其它对象上。</li>
+</ul>
+<h5 id="Rectangle-Class-Design-Question">Rectangle Class Design Question</h5>
+<p>拆成两个部分，命令行应用程序只管计算，变化朝着依赖的反方向传递，永远要依赖于比较稳定的东西，之所以强调于依赖抽象，是因为抽象更加稳定。</p>
+<p>SRP:What is Responsibility?<br>
+Responsibility = “a reason for change.”</p>
+<h5 id="Modoem-Non-SRP-Design">Modoem Non-SRP Design</h5>
+<p>Extract Class<br>
+<strong>某个类做了应该由两个类做的事情</strong>，建立一个新类，将相关的值域和函数从旧类搬移到新类</p>
+<p>CalculateRent()函数怎么写(没必要赌需求，哈哈哈，等需求来的时候再作设计，第一版怎么简单怎么写)</p>
+<h4 id="开放封闭原则">开放封闭原则</h4>
+<h3 id="重构的基本招式">重构的基本招式</h3>
+<h4 id="Rename">Rename</h4>
+<p>为什么要做Rename重构，软件生命周期的成本包含需求、设计、实现、测试和维护，其中维护占比最大。</p>
+<h5 id="为名字加上单位">为名字加上单位</h5>
+<ul>
+<li>Start(int delay) --&gt; Start(int delay_secs)</li>
+<li>CreateCache(int size) --&gt; CreateCache(int size_mb)</li>
+<li>ThrottleDownload(float limit) --&gt; ThrottleDownload(float max_kbps)</li>
+<li>Rotate(float angle) --&gt; Rotate(float degrees_cw)</li>
+</ul>
+<h5 id="附带其他重要属性">附带其他重要属性</h5>
+<ul>
+<li>password --&gt; plaintext_password 纯文本密码，需要加密</li>
+<li>comment --&gt; unsecaped_comment 用户输入，需要转义</li>
+<li>html --&gt; html_utf8 已经转换为UTF-8的html</li>
+<li>data --&gt; data_urlenc 以url方式编码的数据</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://itachicheng.github.io">ChengQiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://itachicheng.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">https://itachicheng.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design_pattern.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/Hello%20World/" title="Hello World"><img class="cover" src="/Hello%20World/Ulchiha.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next</div><div class="next_info">Hello World</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/Ulchiha.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ChengQiang</div><div class="author-info__description">The only way to do great work is to love what you do. Keep looking, and don't settle.</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/itachiCheng"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%BA%94%E5%A4%A7%E5%BF%83%E6%B3%95%EF%BC%88The-Heart%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">面向对象设计五大心法（The Heart）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99"><span class="toc-number">1.1.</span> <span class="toc-text">单一职责原则</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-Responsibilities-of-Object"><span class="toc-number">1.1.1.</span> <span class="toc-text">6 Responsibilities of Object</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Rectangle-Class-Design-Question"><span class="toc-number">1.1.2.</span> <span class="toc-text">Rectangle Class Design Question</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Modoem-Non-SRP-Design"><span class="toc-number">1.1.3.</span> <span class="toc-text">Modoem Non-SRP Design</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E5%B0%81%E9%97%AD%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.</span> <span class="toc-text">开放封闭原则</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E6%9E%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%8B%9B%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">重构的基本招式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Rename"><span class="toc-number">2.1.</span> <span class="toc-text">Rename</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BA%E5%90%8D%E5%AD%97%E5%8A%A0%E4%B8%8A%E5%8D%95%E4%BD%8D"><span class="toc-number">2.1.1.</span> <span class="toc-text">为名字加上单位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%99%84%E5%B8%A6%E5%85%B6%E4%BB%96%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7"><span class="toc-number">2.1.2.</span> <span class="toc-text">附带其他重要属性</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式"><img src="/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design_pattern.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设计模式"/></a><div class="content"><a class="title" href="/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式">设计模式</a><time datetime="2023-12-19T16:38:53.758Z" title="Created 2023-12-19 08:38:53">2023-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Hello%20World/" title="Hello World"><img src="/Hello%20World/Ulchiha.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/Hello%20World/" title="Hello World">Hello World</a><time datetime="2023-12-19T16:38:53.608Z" title="Created 2023-12-19 08:38:53">2023-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Class%20Diagram/" title="Class Diagram"><img src="/Class%20Diagram/design_pattern.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Class Diagram"/></a><div class="content"><a class="title" href="/Class%20Diagram/" title="Class Diagram">Class Diagram</a><time datetime="2023-12-19T16:38:53.606Z" title="Created 2023-12-19 08:38:53">2023-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Non-deterministic-Polynomial/" title="Non-deterministic_Polynomial"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Non-deterministic_Polynomial"/></a><div class="content"><a class="title" href="/Non-deterministic-Polynomial/" title="Non-deterministic_Polynomial">Non-deterministic_Polynomial</a><time datetime="2022-09-17T04:55:15.000Z" title="Created 2022-09-16 21:55:15">2022-09-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Markdown/" title="Markdown"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Markdown"/></a><div class="content"><a class="title" href="/Markdown/" title="Markdown">Markdown</a><time datetime="2022-09-17T04:52:00.000Z" title="Created 2022-09-16 21:52:00">2022-09-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By ChengQiang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

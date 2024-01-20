@@ -1,0 +1,445 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>《基于BERT模型的自然语言处理实践》 | 图灵先生的光</title><meta name="author" content="ChengQiang"><meta name="copyright" content="ChengQiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Chapter I 1.1 BERT（Bidirectional Encoder Representations From Transformers）模型使用预训练和微调的方式来完成自然语言处理任务。这些任务包括问答系统，情感分析和语言推理。 BERTology系列模型：  XLNet模型——引入了"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://itachicheng.github.io/Bert/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '《基于BERT模型的自然语言处理实践》',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-19 08:38:53'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="图灵先生的光" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/Ulchiha.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="图灵先生的光"><span class="site-name">图灵先生的光</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">《基于BERT模型的自然语言处理实践》</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-04-09T22:44:49.000Z" title="Created 2022-04-09 15:44:49">2022-04-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-12-19T16:38:53.606Z" title="Updated 2023-12-19 08:38:53">2023-12-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Machine-Learning/">Machine Learning</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="《基于BERT模型的自然语言处理实践》"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="Chapter-I">Chapter I</h3>
+<h4 id="1-1">1.1</h4>
+<p>BERT（Bidirectional Encoder Representations From Transformers）模型使用预训练和微调的方式来完成自然语言处理任务。这些任务包括问答系统，情感分析和语言推理。</p>
+<p>BERTology系列模型：</p>
+<ul>
+<li>XLNet模型——引入了BERT模型中的双向上下文信息的广义自回归模型。</li>
+<li>RoBERTa和SpanBERT模型引入了BERT模型训练方式和目标。</li>
+<li>结合了多任务及知识蒸馏（Knowledge Distillation)、强化BERT模型功能的MT-DNN模型</li>
+</ul>
+<p>这些模型的一个共同特点是极大规模的数据量、训练强度和模型容量，以及利用无监督模型的训练方式，使其能力空前强大。</p>
+<h4 id="1-2">1.2</h4>
+<p>BERT模型是通过预测屏蔽字词（先将句子中的部分字词屏蔽，再令模型去预测被屏蔽的字词）进行训练的这种方式在语句级的语义分析中取得了极好的效果。</p>
+<p>11项NLP任务：</p>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>类别</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MultiNLI</td>
+<td>文本语义关系识别</td>
+<td>文本间的推理关系，又被称为“文本蕴含关系”。两个文本的关系一共有三种：entailment(蕴含)、contradiction(矛盾)、neutral(中立)</td>
+</tr>
+<tr>
+<td>QQP</td>
+<td>文本匹配</td>
+<td>类似于分类任务，判断两个问题是否等价。使用的是数据集Quora Question Pairs</td>
+</tr>
+<tr>
+<td>QNLI</td>
+<td>自然语言推理</td>
+<td>一个二分类任务?。正样本包含正确的answer,负样本包含不正确的answer。</td>
+</tr>
+<tr>
+<td>SST-2</td>
+<td>文本分类</td>
+<td>基于文本的感情分类任务，使用的是斯坦福大学的情感分类树数据集The Stanford Sentiment Treebank。</td>
+</tr>
+<tr>
+<td>CoLA</td>
+<td>文本分类</td>
+<td>适用于语法错误识别的分类任务，预测一个句子是否是可接受的。使用的是语言可接受性语料库The Corpus of Linguistic Acceptability</td>
+</tr>
+<tr>
+<td>STS-B</td>
+<td>求文本相似度</td>
+<td>用来评判两个文本语义信息的相似度。使用的是语义相似度数据集The Semantic Textual Similarity Benchmark，样本为文本对，分数为1~5</td>
+</tr>
+<tr>
+<td>MRPC</td>
+<td>求文本相似度</td>
+<td>对来源于同一条新闻的两条评论进行处理，判断这两条评论在语义上是否相同。 使用的是微软研究释义语料库Microsoft Research Paraphrase Corpus，样本为文本对。</td>
+</tr>
+<tr>
+<td>RTE</td>
+<td>文本语义关系识别</td>
+<td>与MultiNLI任务类似，只不过数据集更少，使用的是文本语义关系识别数据集Recognizing Textual Entailment</td>
+</tr>
+<tr>
+<td>WNLI</td>
+<td>自然语言推理</td>
+<td>与QNLI任务类似，只不过数据集更少，使用的是文本语义关系识别数据集Recognizing Textual Entailment</td>
+</tr>
+<tr>
+<td>SQuAD</td>
+<td>抽取式阅读理解</td>
+<td>给出一个问题和一段文字，从文字中抽取出问题的答案。使用的是斯坦福大学问答数据集中的阅读理解数据集The Standford Question Answering Dataset</td>
+</tr>
+<tr>
+<td>NER</td>
+<td>命名实体识别（Named Entity Recognition)</td>
+<td>实体词识别（NER)任务是NLP中的基础任务。它用于识别文本中的人名（PER)、地名（LOC）、组织（ORG），以及其他实体（MISC）等。例如：                                          （李 B-PER)、（金 I-PER）、（洪 I-PER）、（在 O）、(办 B-LOC)、（室 I-LOC）。                                                     其中， O表示一个非实体。B表示一个实体块的开始。I表示一个实体块的内部。实体词识别本质上是一个分类任务（又被称为“序列标注任务”）。实体次识别是句法分析的基础，而句法分析又是NLP任务的核心。</td>
+</tr>
+<tr>
+<td>SWAG</td>
+<td>带选择题的阅读理解</td>
+<td>给出一个陈述句子和4个备选句子，判断前者与后者中的哪一个句子最有逻辑连续性。使用的是情境数据集The Situations With Adversarial Generations Dataset。</td>
+</tr>
+</tbody>
+</table>
+<p>以上所有任务涵盖了如下4种场景：</p>
+<ul>
+<li>场景一：处理类似阅读理解的任务。最为典型的是SQuAD。</li>
+<li>场景二：处理句子与段落间的匹配任务。例如求文本相似度</li>
+<li>场景三：提取句子深层语义特征任务。例如文本分类和文本匹配</li>
+<li>场景四：基于句子或段落级别的短文本（长度小于512个子词的文本）处理任务。</li>
+</ul>
+<h3 id="1-3">1.3</h3>
+<p>BERT模型是由“Transformer模型中的编码器（Encoder) + 双向（正向序列和反向序列）结构”组成的。</p>
+<p>BERT模型的主要创新点是其独特的预训练方法，这种方法使用Masked Language Model和Next Sentence Prediction两种方法分别捕捉“词语”和“句子”级别的表示。</p>
+<h6 id="四件套：">四件套：</h6>
+<ul>
+<li>神经网络的基础知识</li>
+<li>NLP的基础知识</li>
+<li>编程框架的基础知识</li>
+<li>BERT模型的原理及应用</li>
+</ul>
+<p>我作为读者，对1和3部分有一定基础，所以整理至此，希望直接跳过第二章神经网络基础进入代码任务实战。</p>
+<h3 id="Chapter-III">Chapter III</h3>
+<h3 id="3-1">3.1</h3>
+<p>NLP的主要目的是让计算机像人一样去理解自然语言。在NLP中，大量使用了编译原理的相关技术，例如词法分析、语法分析等。除此之外，在“理解”这个层面中，NLP则使用到语义理解、机器学习等技术。</p>
+<p>文字只是信息的载体，而非信息本身。首先需要将文本数据换一种载体（表示形式）——数值化；再将数值化后的文本数据输入计算机中进行处理，从而完成特定的计算任务。这便是NLP的本质，即</p>
+<pre><code>自然语言处理 = 文本处理 + 机器学习
+</code></pre>
+<h4 id="3-1-1-情感分析、相似度分析等任务的本质">3.1.1 情感分析、相似度分析等任务的本质</h4>
+<p>情感分析、相似度分析等任务属于NLP中的自然语言理解子任务，即对句子级别的文字进行理解，并根据理解的语义完成具体的要求。表1.1中前九项数据集加上SWAG都可以嵌入这两个场景中。</p>
+<ul>
+<li>在情感分析任务中，输出这段文字所属的情感级别（满意、一般、不满意等）。</li>
+<li>在相似度分析任务中，输出两个句子相似的概率。</li>
+</ul>
+<h4 id="3-1-2-完型填空、实体词识别（NER）等任务的本质">3.1.2 完型填空、实体词识别（NER）等任务的本质</h4>
+<p>同样的，这也是自然语言理解中的子任务。他们是基于句子中的子词进行处理的，所以又被称为“子词级别任务”。</p>
+<ol>
+<li>子词级别任务与BERT模型</li>
+</ol>
+<p>子词级别任务属于BERT模型的预训练任务之一，它等价于完型填空任务，即根据句子的上下子词推测出当前位置应当是什么子词。</p>
+<ol start="2">
+<li>实体词识别任务及常用模型</li>
+</ol>
+<p>​</p>
+<h4 id="3-1-3-文章摘要任务、问答任务、翻译任务的本质">3.1.3 文章摘要任务、问答任务、翻译任务的本质</h4>
+<p>文章摘要任务、问答任务、翻译任务包括自然语言理解和自然语言生成两种子任务。它需要先理解输入文本的语义特征，再根据语义特征生成指定的描述。</p>
+<p>文章摘要任务主要基于文章级别进行处理，而问答任务和翻译任务主要基于句子级别进行处理。它们的本质都是“序列到序列”任务。</p>
+<h6 id="自然语言处理工具包">自然语言处理工具包</h6>
+<p>SpaCy</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install spacy</span><br><span class="line">pip install en_core_web_sm-<span class="number">3.2</span><span class="number">.0</span>.tar.gz</span><br><span class="line"><span class="comment">## 20220410最新3.2.0版本</span></span><br></pre></td></tr></table></figure>
+<h6 id="中文分词工具">中文分词工具</h6>
+<p>Jieba</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jiebe</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line">seg_list = jieba.cut(<span class="string">&quot;jieba是一个中文分词工具&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot; &quot;</span>.join(seg_list))</span><br><span class="line"></span><br><span class="line"><span class="comment">#Output:</span></span><br><span class="line"><span class="comment">#jieba 是 一个 中文 分词 工具</span></span><br></pre></td></tr></table></figure>
+<h6 id="中文转拼音工具">中文转拼音工具</h6>
+<p>Pypinyin</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pypinyin</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pypinyin <span class="keyword">import</span> lazy_pinyin, Style</span><br><span class="line">a = lazy_pinyin(<span class="string">&#x27;牟&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="comment">#Output:</span></span><br><span class="line"><span class="comment">#[&#x27;mou2&#x27;]</span></span><br><span class="line">b = lazy_pinyin(<span class="string">&#x27;张首晟&#x27;</span>, style = Style.TONE3)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"><span class="comment">#Output:</span></span><br><span class="line"><span class="comment">#[&#x27;zhang1&#x27;, &#x27;shou3&#x27;, &#x27;cheng2&#x27;]</span></span><br><span class="line"><span class="comment">## 拼音模块甚至还具有分词功能</span></span><br><span class="line"><span class="keyword">from</span> pypinyin.contrib.mmseg <span class="keyword">import</span> seg</span><br><span class="line">text = <span class="string">&#x27;斩断这世间的因果&#x27;</span></span><br><span class="line">b = <span class="built_in">list</span>(seg.cut(text))</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"><span class="comment">## Output:</span></span><br><span class="line">[<span class="string">&#x27;斩&#x27;</span>, <span class="string">&#x27;断&#x27;</span>, <span class="string">&#x27;这&#x27;</span>, <span class="string">&#x27;世间&#x27;</span>, <span class="string">&#x27;的&#x27;</span>, <span class="string">&#x27;因&#x27;</span>, <span class="string">&#x27;果&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<h6 id="评估翻译质量的算法库——SacreBLEU">评估翻译质量的算法库——SacreBLEU</h6>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install sacrebleu</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sacrebleu</span><br><span class="line"></span><br><span class="line">sys = [<span class="string">&#x27;I am a student.&#x27;</span>]</span><br><span class="line">sysorg = [<span class="string">&#x27;He is a student.&#x27;</span>]</span><br><span class="line">refs = [[<span class="string">&#x27;He is a student&#x27;</span>]]</span><br><span class="line"><span class="built_in">print</span>(sacrebleu.corpus_bleu(sysorg, refs).score)</span><br><span class="line"><span class="built_in">print</span>(sacrebleu.corpus_bleu(sys, refs).score)</span><br><span class="line"><span class="comment">## Output:</span></span><br><span class="line"><span class="comment"># 66.87403049764218</span></span><br><span class="line"><span class="comment"># 21.3643503198117</span></span><br></pre></td></tr></table></figure>
+<h6 id="借助Unicode处理中文字符的常用操作">借助Unicode处理中文字符的常用操作</h6>
+<ol>
+<li>判断是否是汉字</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_chinese</span>(<span class="params">ch</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;\u4e00&#x27;</span> &lt;= ch &lt;= <span class="string">&#x27;\u9fff&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"><span class="built_in">print</span>(is_chinese(<span class="string">&#x27;光&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(is_chinese(<span class="string">&#x27;a&#x27;</span>))</span><br><span class="line"><span class="comment"># Output:</span></span><br><span class="line"><span class="comment"># True</span></span><br><span class="line"><span class="comment"># False</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>判断是否是分隔符</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unicodedata</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_punctuation</span>(<span class="params">ch</span>):</span></span><br><span class="line">    <span class="keyword">if</span> ch <span class="keyword">in</span> (<span class="string">&quot;\n&quot;</span>, <span class="string">&quot;\t&quot;</span>, <span class="string">&quot;\r&quot;</span>) <span class="keyword">or</span> unicodedata.category(ch) <span class="keyword">in</span> (<span class="string">&quot;Zs&quot;</span>, <span class="string">&quot;Zp&quot;</span>, <span class="string">&quot;Zl&quot;</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">is_punctuation(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line"><span class="comment"># Output:</span></span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>判断是否为标点符号</li>
+</ol>
+<p>判断标点符号的方法需要分解成两部分：根据ASCII判断是否为英文标点符号和根据Unicode的通用类型，判断是否为中文标点符号。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unicodedata</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_punctuation</span>(<span class="params">char</span>):</span></span><br><span class="line">    cp = <span class="built_in">ord</span>(char) <span class="comment">## 转换成ASCII码</span></span><br><span class="line">    <span class="built_in">print</span>(cp) <span class="comment">#65292</span></span><br><span class="line">    <span class="keyword">if</span> ((cp &gt;= <span class="number">33</span> <span class="keyword">and</span> cp &lt;= <span class="number">47</span>) <span class="keyword">or</span> (cp &gt;= <span class="number">58</span> <span class="keyword">and</span> cp &lt;=<span class="number">64</span> ) <span class="keyword">or</span></span><br><span class="line">    (cp &gt;= <span class="number">91</span> <span class="keyword">and</span> cp &lt;= <span class="number">96</span>) <span class="keyword">or</span> (cp &gt;= <span class="number">123</span> <span class="keyword">and</span> cp &lt;= <span class="number">126</span>)):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    cat = unicodedata.category(char)</span><br><span class="line">    <span class="keyword">if</span> cat.startswith(<span class="string">&quot;P&quot;</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">is_punctuation(<span class="string">&#x27;，&#x27;</span>) <span class="comment">## 注意这是中文逗号</span></span><br><span class="line"><span class="comment"># Output: True</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>全角和半角的转换</li>
+</ol>
+<p>在Unicode中，半角字符的编码范围是：33（0x21)~126（0x7E)，全角字符的编码范围是：</p>
+<p>65281（0xFF01) ~ 65374（0xFF5E）。全角字符与相应的半角字符相差65248（0xFEE0）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">strQ2B</span>(<span class="params">ustring</span>):</span></span><br><span class="line">    rstring = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> uchar <span class="keyword">in</span> ustring:</span><br><span class="line">        inside_code=<span class="built_in">ord</span>(uchar)</span><br><span class="line">        <span class="keyword">if</span> inside_code == <span class="number">12288</span>:</span><br><span class="line">            inside_code = <span class="number">32</span></span><br><span class="line">        <span class="keyword">elif</span> (inside_code &gt;= <span class="number">65281</span> <span class="keyword">and</span> inside_code &lt;= <span class="number">65374</span>):</span><br><span class="line">            inside_code -=<span class="number">65248</span></span><br><span class="line">        rstring += <span class="built_in">chr</span>(inside_code)</span><br><span class="line">    <span class="keyword">return</span> rstring</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Before: &quot;</span>,<span class="string">&quot;ｗｏ们是冠军&quot;</span>)<span class="comment"># 全角</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;After: &quot;</span>, strQ2B(<span class="string">&quot;ｗｏ们是冠军&quot;</span>)) <span class="comment">#转换后的半角</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Output:</span></span><br><span class="line"><span class="comment"># Before:  ｗｏ们是冠军 </span></span><br><span class="line"><span class="comment"># After:  wo们是冠军</span></span><br></pre></td></tr></table></figure>
+<p>… …</p>
+<h4 id="3-4-4-什么是依存关系分析">3.4.4 什么是依存关系分析</h4>
+<p>句法分析分为句法结构分析和依存关系分析。句法结构分析用于获取整个句子的句法结构，依存关系分析用于获取词汇之间的依存关系。目前的句法分析已经从句法结构分析转向依存句法分析。</p>
+<p>依存语法中关于依存关系的四条公理：</p>
+<ul>
+<li>在一个句子中只有一个成分是独立的（中心成分）。</li>
+<li>受支配的其他成分直接依存于它的支配者。</li>
+<li>任何一个成分都不能依存于两个或两个以上的支配者。</li>
+<li>如果A成分直接依存于B成分，而C成分在句中位于A成分和B成分之间，那么C成分或者依存于A成分，或者依存于B成分，或者依存于A成分和B成分之间的某一个成分。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> spacy</span><br><span class="line"><span class="keyword">from</span> spacy <span class="keyword">import</span> displacy</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line">parser = spacy.load(<span class="string">&quot;en_core_web_sm&quot;</span>)</span><br><span class="line">doc = <span class="string">&quot;We focus on the research and education of AI technology&quot;</span></span><br><span class="line">doc = parser(doc)</span><br><span class="line">svg = displacy.render(doc, style = <span class="string">&#x27;dep&#x27;</span>, jupyter = <span class="literal">False</span>)</span><br><span class="line">output_path = Path(<span class="string">&quot;./dependency_plot.svg&quot;</span>)</span><br><span class="line">output_path.<span class="built_in">open</span>(<span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>).write(svg)</span><br></pre></td></tr></table></figure>
+<p><img src="dependency_plot.svg" alt=""></p>
+<h6 id="弧线的解释">弧线的解释</h6>
+<p>图中的弧线部分表示单词之间的关系。该关系有如下几种：nsubj(名词主语)、prep(介词修饰语)、pobj(介词的宾语)、det(限定词)、cc(连词)、conj(连词)、compound(组合词)。</p>
+<h6 id="词性的解释">词性的解释</h6>
+<p>最下面一行，是每个单词的词性。词性有如下几种：PROPN(代词)、VERB(动词)、ADP(介词)、DET(动词)、NOUN(名词)、CCONJ(连接词)、ADJ(形容词)、</p>
+<p>PUNCT(标点)。</p>
+<h6 id="依存关系的内部结构">依存关系的内部结构</h6>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">parse_ret = doc.to_json()</span><br><span class="line"><span class="built_in">print</span>(parse_ret[<span class="string">&#x27;tokens&#x27;</span>])</span><br><span class="line">[&#123;<span class="string">&#x27;id&#x27;</span>: <span class="number">0</span>, <span class="string">&#x27;start&#x27;</span>: <span class="number">0</span>, <span class="string">&#x27;end&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;tag&#x27;</span>: <span class="string">&#x27;PRP&#x27;</span>, <span class="string">&#x27;pos&#x27;</span>: <span class="string">&#x27;PRON&#x27;</span>, <span class="string">&#x27;morph&#x27;</span>: <span class="string">&#x27;Case=Nom|Number=Plur|Person=1|PronType=Prs&#x27;</span>, <span class="string">&#x27;lemma&#x27;</span>: <span class="string">&#x27;we&#x27;</span>, <span class="string">&#x27;dep&#x27;</span>: <span class="string">&#x27;nsubj&#x27;</span>, <span class="string">&#x27;head&#x27;</span>: <span class="number">1</span>&#125;, </span><br><span class="line"> &#123;<span class="string">&#x27;id&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;start&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;end&#x27;</span>: <span class="number">8</span>, <span class="string">&#x27;tag&#x27;</span>: <span class="string">&#x27;VBP&#x27;</span>, <span class="string">&#x27;pos&#x27;</span>: <span class="string">&#x27;VERB&#x27;</span>, <span class="string">&#x27;morph&#x27;</span>: <span class="string">&#x27;Tense=Pres|VerbForm=Fin&#x27;</span>, <span class="string">&#x27;lemma&#x27;</span>: <span class="string">&#x27;focus&#x27;</span>, <span class="string">&#x27;dep&#x27;</span>: <span class="string">&#x27;ROOT&#x27;</span>, <span class="string">&#x27;head&#x27;</span>: <span class="number">1</span>&#125;, </span><br><span class="line"> &#123;<span class="string">&#x27;id&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;start&#x27;</span>: <span class="number">9</span>, <span class="string">&#x27;end&#x27;</span>: <span class="number">11</span>, <span class="string">&#x27;tag&#x27;</span>: <span class="string">&#x27;IN&#x27;</span>, <span class="string">&#x27;pos&#x27;</span>: <span class="string">&#x27;ADP&#x27;</span>, <span class="string">&#x27;morph&#x27;</span>: <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;lemma&#x27;</span>: <span class="string">&#x27;on&#x27;</span>, <span class="string">&#x27;dep&#x27;</span>: <span class="string">&#x27;prep&#x27;</span>, <span class="string">&#x27;head&#x27;</span>: <span class="number">1</span>&#125;, </span><br><span class="line"> &#123;<span class="string">&#x27;id&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;start&#x27;</span>: <span class="number">12</span>, <span class="string">&#x27;end&#x27;</span>: <span class="number">15</span>, <span class="string">&#x27;tag&#x27;</span>: <span class="string">&#x27;DT&#x27;</span>, <span class="string">&#x27;pos&#x27;</span>: <span class="string">&#x27;DET&#x27;</span>, <span class="string">&#x27;morph&#x27;</span>: <span class="string">&#x27;Definite=Def|PronType=Art&#x27;</span>, <span class="string">&#x27;lemma&#x27;</span>: <span class="string">&#x27;the&#x27;</span>, <span class="string">&#x27;dep&#x27;</span>: <span class="string">&#x27;det&#x27;</span>, <span class="string">&#x27;head&#x27;</span>: <span class="number">4</span>&#125;, </span><br><span class="line"> &#123;<span class="string">&#x27;id&#x27;</span>: <span class="number">4</span>, <span class="string">&#x27;start&#x27;</span>: <span class="number">16</span>, <span class="string">&#x27;end&#x27;</span>: <span class="number">24</span>, <span class="string">&#x27;tag&#x27;</span>: <span class="string">&#x27;NN&#x27;</span>, <span class="string">&#x27;pos&#x27;</span>: <span class="string">&#x27;NOUN&#x27;</span>, <span class="string">&#x27;morph&#x27;</span>: <span class="string">&#x27;Number=Sing&#x27;</span>, <span class="string">&#x27;lemma&#x27;</span>: <span class="string">&#x27;research&#x27;</span>, <span class="string">&#x27;dep&#x27;</span>: <span class="string">&#x27;pobj&#x27;</span>, <span class="string">&#x27;head&#x27;</span>: <span class="number">2</span>&#125;, </span><br><span class="line"> &#123;<span class="string">&#x27;id&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;start&#x27;</span>: <span class="number">25</span>, <span class="string">&#x27;end&#x27;</span>: <span class="number">28</span>, <span class="string">&#x27;tag&#x27;</span>: <span class="string">&#x27;CC&#x27;</span>, <span class="string">&#x27;pos&#x27;</span>: <span class="string">&#x27;CCONJ&#x27;</span>, <span class="string">&#x27;morph&#x27;</span>: <span class="string">&#x27;ConjType=Cmp&#x27;</span>, <span class="string">&#x27;lemma&#x27;</span>: <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;dep&#x27;</span>: <span class="string">&#x27;cc&#x27;</span>, <span class="string">&#x27;head&#x27;</span>: <span class="number">4</span>&#125;, </span><br><span class="line"> &#123;<span class="string">&#x27;id&#x27;</span>: <span class="number">6</span>, <span class="string">&#x27;start&#x27;</span>: <span class="number">29</span>, <span class="string">&#x27;end&#x27;</span>: <span class="number">38</span>, <span class="string">&#x27;tag&#x27;</span>: <span class="string">&#x27;NN&#x27;</span>, <span class="string">&#x27;pos&#x27;</span>: <span class="string">&#x27;NOUN&#x27;</span>, <span class="string">&#x27;morph&#x27;</span>: <span class="string">&#x27;Number=Sing&#x27;</span>, <span class="string">&#x27;lemma&#x27;</span>: <span class="string">&#x27;education&#x27;</span>, <span class="string">&#x27;dep&#x27;</span>: <span class="string">&#x27;conj&#x27;</span>, <span class="string">&#x27;head&#x27;</span>: <span class="number">4</span>&#125;, </span><br><span class="line"> &#123;<span class="string">&#x27;id&#x27;</span>: <span class="number">7</span>, <span class="string">&#x27;start&#x27;</span>: <span class="number">39</span>, <span class="string">&#x27;end&#x27;</span>: <span class="number">41</span>, <span class="string">&#x27;tag&#x27;</span>: <span class="string">&#x27;IN&#x27;</span>, <span class="string">&#x27;pos&#x27;</span>: <span class="string">&#x27;ADP&#x27;</span>, <span class="string">&#x27;morph&#x27;</span>: <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;lemma&#x27;</span>: <span class="string">&#x27;of&#x27;</span>, <span class="string">&#x27;dep&#x27;</span>: <span class="string">&#x27;prep&#x27;</span>, <span class="string">&#x27;head&#x27;</span>: <span class="number">4</span>&#125;, </span><br><span class="line"> &#123;<span class="string">&#x27;id&#x27;</span>: <span class="number">8</span>, <span class="string">&#x27;start&#x27;</span>: <span class="number">42</span>, <span class="string">&#x27;end&#x27;</span>: <span class="number">44</span>, <span class="string">&#x27;tag&#x27;</span>: <span class="string">&#x27;NNP&#x27;</span>, <span class="string">&#x27;pos&#x27;</span>: <span class="string">&#x27;PROPN&#x27;</span>, <span class="string">&#x27;morph&#x27;</span>: <span class="string">&#x27;Number=Sing&#x27;</span>, <span class="string">&#x27;lemma&#x27;</span>: <span class="string">&#x27;AI&#x27;</span>, <span class="string">&#x27;dep&#x27;</span>: <span class="string">&#x27;compound&#x27;</span>, <span class="string">&#x27;head&#x27;</span>: <span class="number">9</span>&#125;, </span><br><span class="line"> &#123;<span class="string">&#x27;id&#x27;</span>: <span class="number">9</span>, <span class="string">&#x27;start&#x27;</span>: <span class="number">45</span>, <span class="string">&#x27;end&#x27;</span>: <span class="number">55</span>, <span class="string">&#x27;tag&#x27;</span>: <span class="string">&#x27;NN&#x27;</span>, <span class="string">&#x27;pos&#x27;</span>: <span class="string">&#x27;NOUN&#x27;</span>, <span class="string">&#x27;morph&#x27;</span>: <span class="string">&#x27;Number=Sing&#x27;</span>, <span class="string">&#x27;lemma&#x27;</span>: <span class="string">&#x27;technology&#x27;</span>, <span class="string">&#x27;dep&#x27;</span>: <span class="string">&#x27;pobj&#x27;</span>, <span class="string">&#x27;head&#x27;</span>: <span class="number">7</span>&#125;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>id:单词的序号。</li>
+<li>start:单词的起始位置</li>
+<li>end:单词的结束位置</li>
+<li>pos:词性标注</li>
+<li>tag:另一种格式的词性标注</li>
+<li>dep:依存关系</li>
+<li>head:所依赖的单词</li>
+</ul>
+<h4 id="3-4-5-TF-IDF">3.4.5 TF-IDF</h4>
+<p>字词的重要性，随着它在文件中出现的次数呈正比增加，但同时会随着它在语料库中出现的频率呈反比下降。TFIDF算法是建立在这样一个假设之上的：对区别文档最有意义的词语应该是那些在文档中出现频率高，而在整个文档集合的其他文档中出现频率少的词语。</p>
+<h3 id="Chapter-V">Chapter V</h3>
+<h4 id="5-3-3-张量的基本操作">5.3.3 张量的基本操作</h4>
+<ul>
+<li>获取张量中的元素的个数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">a = torch.Tensor(<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(torch.numel(a)) <span class="comment">## print 2</span></span><br><span class="line">b = torch.tensor(<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(torch.numel(b)) <span class="comment">## print 1 </span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>张量的判断</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = torch.Tensor(<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(torch.is_tensor(a))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>张量的类型转换</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">a = torch.FloatTensor([<span class="number">4</span>])</span><br><span class="line"><span class="built_in">print</span>(a.<span class="built_in">type</span>(torch.IntTensor))</span><br><span class="line"><span class="built_in">print</span>(a.to(torch.<span class="built_in">int</span>))</span><br><span class="line"><span class="comment">## tensor([4], dtype=torch.int32)</span></span><br><span class="line"><span class="comment">## tensor([4], dtype=torch.int32)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>张量类中的重载操作符函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">a = torch.FloatTensor([<span class="number">4</span>])</span><br><span class="line">a.add(a)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line">a.add_(a)</span><br><span class="line"></span><br><span class="line"><span class="comment">## tensor([4.])</span></span><br><span class="line"><span class="comment">## tensor([8.])</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>张量与Numpy间的互相转换(张量与Numpy类型数据的转换是基于零copy技术实现的)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 在转换过程中，Pytorch张量和Numpy数组对象共享一个内存区域，PyTorch张量会保留一个指向内部Numpy数组的指针，而不是直接复制Numpy的值。</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = torch.FloatTensor([<span class="number">4</span>])</span><br><span class="line"><span class="built_in">print</span>(a.numpy())</span><br><span class="line">anp = np.array([<span class="number">4</span>])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(torch.from_numpy(anp))</span><br><span class="line"><span class="built_in">print</span>(torch.tensor(anp))</span><br><span class="line"><span class="comment">## [4.]</span></span><br><span class="line"><span class="comment">## tensor([4], dtype=torch.int32)</span></span><br><span class="line"><span class="comment">## tensor([4], dtype=torch.int32)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>张量与Numpy互相转换的陷阱</li>
+</ul>
+<p>Numpy转换成张量后，如果对Numpy的值进行修改会有以下两种情况：</p>
+<ul>
+<li>
+<ul>
+<li>
+<p>使用替换内存的运算符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nparray = np.array([<span class="number">1</span>,<span class="number">1</span>])</span><br><span class="line">x = torch.from_numpy(nparray)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line">nparray+=<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="comment">## tensor([1, 1], dtype=torch.int32)</span></span><br><span class="line"><span class="comment">## tensor([2, 2], dtype=torch.int32)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>不使用内存替换运算符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">nparray = np.array([<span class="number">1</span>,<span class="number">1</span>])</span><br><span class="line">x = torch.from_numpy(nparray)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line">nparray = nparray + <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="comment">## tensor([1, 1], dtype=torch.int32)</span></span><br><span class="line"><span class="comment">## tensor([1, 1], dtype=torch.int32)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-3-4-在CPU和GPU控制的内存中定义张量">5.3.4 在CPU和GPU控制的内存中定义张量</h4>
+<ul>
+<li>将CPU内存中的张量复制到GPU内存中</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">a = torch.FloatTensor([<span class="number">4</span>])</span><br><span class="line">b = a.cuda()</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"><span class="comment">## tensor([4.], device=&#x27;cuda:0&#x27;)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>直接在GPU内存中定义张量</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = torch.tensor([<span class="number">4</span>], device=</span><br><span class="line">                <span class="string">&#x27;cuda&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">## tensor([4], device=&#x27;cuda:0&#x27;)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用to()方法来指定设备</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = torch.FloatTensor([<span class="number">4</span>])</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(a.to(<span class="string">&quot;cuda:0&quot;</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用环境变量CUDA_VISIBLE_DEVICES来指定设备</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">&quot;CUDA_VISIBLE_DEVICES&quot;</span>]  = <span class="string">&quot;0&quot;</span></span><br><span class="line">a = torch.FloatTensor([<span class="number">4</span>])</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+<h4 id="5-3-5-张量间的数据操作">5.3.5 张量间的数据操作</h4>
+<ol>
+<li>view()方法与contiguous()方法</li>
+</ol>
+<p>view方法作用于原来的张量，传入改变新张量的形状，新张量的总元素数目和原来张量的元素数目相同。view方法不会改变张量底层的数据，只是改变维度步长的信息，所以view方法无法对分布在不同内存块的数据做处理。contiguous()方法可以把张量复制到连续的整块内存中。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">t = torch.randn(<span class="number">12</span>)</span><br><span class="line"><span class="built_in">print</span>(t.is_contiguous())</span><br><span class="line">t.view(<span class="number">4</span>, <span class="number">3</span>).is_contiguous()</span><br><span class="line"><span class="built_in">print</span>(t.data_ptr())</span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">3</span>, <span class="number">4</span>).data_ptr())</span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">3</span>, <span class="number">4</span>).contiguous().data_ptr())</span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">3</span>, <span class="number">4</span>).transpose(<span class="number">0</span>, <span class="number">1</span>).data_ptr())</span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">3</span>, <span class="number">4</span>).transpose(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">3</span>, <span class="number">4</span>).transpose(<span class="number">0</span>, <span class="number">1</span>).is_contiguous())</span><br><span class="line"></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment"># True</span></span><br><span class="line"><span class="comment"># 1726440683072</span></span><br><span class="line"><span class="comment"># 1726440683072</span></span><br><span class="line"><span class="comment"># 1726440683072</span></span><br><span class="line"><span class="comment"># 1726440683072</span></span><br><span class="line"><span class="comment"># tensor([[-1.4617,  0.2328,  0.1896, -0.2204],</span></span><br><span class="line"><span class="comment">#         [ 0.1491,  0.0100, -0.1243,  1.4697],</span></span><br><span class="line"><span class="comment">#         [-0.3951, -0.5101,  1.1163, -0.5926]])</span></span><br><span class="line"><span class="comment"># tensor([[-1.4617,  0.1491, -0.3951],</span></span><br><span class="line"><span class="comment">#         [ 0.2328,  0.0100, -0.5101],</span></span><br><span class="line"><span class="comment">#         [ 0.1896, -0.1243,  1.1163],</span></span><br><span class="line"><span class="comment">#         [-0.2204,  1.4697, -0.5926]])</span></span><br><span class="line"><span class="comment"># False</span></span><br><span class="line"><span class="comment"># 1726440684352</span></span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>transpose()方法</li>
+</ol>
+<p>transpose()方法产生的张量存储并不一定都是不连续的，当我们考察连续性是C数组连续的时候，如果用transpose()交换完维度后，row方向的步长max(1 byte, x % byte_len)为1 byte,那么仍然可以作为C 数组连续，如下试验：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">t = torch.randn(<span class="number">12</span>)</span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">1</span>, <span class="number">12</span>))</span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">1</span>, <span class="number">12</span>).transpose(<span class="number">0</span>,<span class="number">1</span>).is_contiguous())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">3</span>, <span class="number">4</span>).transpose(<span class="number">0</span>,<span class="number">1</span>).is_contiguous())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">6</span>, <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">6</span>, <span class="number">2</span>).transpose(<span class="number">0</span>,<span class="number">1</span>).is_contiguous())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">12</span>, <span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(t.view(<span class="number">12</span>, <span class="number">1</span>).transpose(<span class="number">0</span>,<span class="number">1</span>).is_contiguous())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># tensor([[-0.2065,  0.7754,  0.5719,  1.1224, -0.5870,  0.8254, -0.1786, -0.0678,</span></span><br><span class="line"><span class="comment">#           0.7953, -1.5381,  1.2669, -0.6384]])</span></span><br><span class="line"><span class="comment"># True</span></span><br><span class="line"><span class="comment"># tensor([[-0.2065,  0.7754,  0.5719,  1.1224],</span></span><br><span class="line"><span class="comment">#         [-0.5870,  0.8254, -0.1786, -0.0678],</span></span><br><span class="line"><span class="comment">#         [ 0.7953, -1.5381,  1.2669, -0.6384]])</span></span><br><span class="line"><span class="comment"># False</span></span><br><span class="line"><span class="comment"># tensor([[-0.2065,  0.7754],</span></span><br><span class="line"><span class="comment">#         [ 0.5719,  1.1224],</span></span><br><span class="line"><span class="comment">#         [-0.5870,  0.8254],</span></span><br><span class="line"><span class="comment">#         [-0.1786, -0.0678],</span></span><br><span class="line"><span class="comment">#         [ 0.7953, -1.5381],</span></span><br><span class="line"><span class="comment">#         [ 1.2669, -0.6384]])</span></span><br><span class="line"><span class="comment"># False</span></span><br><span class="line"><span class="comment"># tensor([[-0.2065],</span></span><br><span class="line"><span class="comment">#         [ 0.7754],</span></span><br><span class="line"><span class="comment">#         [ 0.5719],</span></span><br><span class="line"><span class="comment">#         [ 1.1224],</span></span><br><span class="line"><span class="comment">#         [-0.5870],</span></span><br><span class="line"><span class="comment">#         [ 0.8254],</span></span><br><span class="line"><span class="comment">#         [-0.1786],</span></span><br><span class="line"><span class="comment">#         [-0.0678],</span></span><br><span class="line"><span class="comment">#         [ 0.7953],</span></span><br><span class="line"><span class="comment">#         [-1.5381],</span></span><br><span class="line"><span class="comment">#         [ 1.2669],</span></span><br><span class="line"><span class="comment">#         [-0.6384]])</span></span><br><span class="line"><span class="comment"># True</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在此，调用view()之前一定要保证张量是contiguous()，可以用is_contiguous()来判断。</p>
+<ol start="3">
+<li>reshape()方法</li>
+</ol>
+<p>相当于contiguous().view()的调用，重新拷贝出数组的连续表示。</p>
+<ol start="4">
+<li>用torch.cat()函数实现数据连接</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = torch.tensor([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br><span class="line">b = torch.tensor([[<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>]])</span><br><span class="line"><span class="built_in">print</span>(torch.cat([a,b],dim=<span class="number">0</span>))</span><br><span class="line"><span class="built_in">print</span>(torch.cat([a,b],dim=<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<p>torch.stack()函数和torch.cat()函数类似，但是stack之后张量维度会改变。</p>
+<ol start="5">
+<li>用torch.chunk()函数实现数据均匀分割</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = torch.tensor([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br><span class="line">torch.chunk(a, chunks = <span class="number">2</span>, dim = <span class="number">0</span>)</span><br><span class="line"><span class="comment"># (tensor([[1, 2]]), tensor([[3, 4]]))</span></span><br><span class="line"><span class="comment"># (tensor([[1],</span></span><br><span class="line"><span class="comment">#          [3]]), tensor([[2],</span></span><br><span class="line"><span class="comment">#          [4]]))</span></span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>用torch.split()函数实现数据不均匀分割</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">b = torch.tensor([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</span><br><span class="line"><span class="built_in">print</span>(torch.split(b, split_size_or_sections=<span class="number">1</span>, dim = <span class="number">0</span>))</span><br><span class="line">b = torch.tensor([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</span><br><span class="line"><span class="built_in">print</span>(torch.split(b, split_size_or_sections=<span class="number">1</span>, dim = <span class="number">1</span>))</span><br><span class="line"><span class="comment"># (tensor([[1, 2, 3]]), tensor([[4, 5, 6]]))</span></span><br><span class="line"><span class="comment"># (tensor([[1],</span></span><br><span class="line"><span class="comment">#        [4]]), tensor([[2],</span></span><br><span class="line"><span class="comment">#        [5]]), tensor([[3],</span></span><br><span class="line"><span class="comment">#        [6]]))</span></span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>用torch.gather()函数对张量数据进行检索</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">b = torch.tensor([[<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>],[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]])</span><br><span class="line"><span class="built_in">print</span>(torch.gather(b, dim=<span class="number">1</span>, index=torch.tensor([[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>],[<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>]])))</span><br><span class="line">b = torch.tensor([[<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>],[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]])</span><br><span class="line"><span class="built_in">print</span>(torch.gather(b, dim=<span class="number">0</span>, index=torch.tensor([[<span class="number">0</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">0</span>]])))</span><br><span class="line"><span class="comment"># tensor([[5, 6, 5],</span></span><br><span class="line"><span class="comment">#         [2, 3, 2]])</span></span><br><span class="line"><span class="comment"># tensor([[5, 2],</span></span><br><span class="line"><span class="comment">#         [1, 6]])</span></span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>获取数据中最大值、最小值的索引</li>
+</ol>
+<p>torch.argmax()函数用于返回最大值索引，torch.argmin()函数用于返回最小值索引。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = torch.tensor([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br><span class="line"><span class="built_in">print</span>(torch.argmax(a, dim=<span class="number">0</span>))</span><br><span class="line"><span class="built_in">print</span>(torch.argmin(a, dim=<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>大多数常用的函数sqrt一般有两种调用方式，第一种是调用张量的内置方法，第二种是调用torch自带的函数。</li>
+<li>矩阵的乘法和张量的缩并</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://rockt.github.io/2018/04/30/einsum">Einstein Summation Convention</a></li>
+</ul>
+<ol start="11">
+<li>张量的广播</li>
+</ol>
+<p>完成扩增维度的两个张量必须能够在维度上对齐，即两个张量之间对应的维度存在两种情况，至少有一个维度大小为1，或者两个维度大小大小均不为1，但是相等。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://itachicheng.github.io">ChengQiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://itachicheng.github.io/Bert/">https://itachicheng.github.io/Bert/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/NLP/">NLP</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Pythonic/" title="Pythonic之旅"><img class="cover" src="/Pythonic/Python-language.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">Pythonic之旅</div></div></a></div><div class="next-post pull-right"><a href="/Selenium/" title="Selenium UI自动化测试神器"><img class="cover" src="/Selenium/Selenium_logo.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next</div><div class="next_info">Selenium UI自动化测试神器</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/Ulchiha.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ChengQiang</div><div class="author-info__description">The only way to do great work is to love what you do. Keep looking, and don't settle.</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/itachiCheng"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-I"><span class="toc-number">1.</span> <span class="toc-text">Chapter I</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1"><span class="toc-number">1.1.</span> <span class="toc-text">1.1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2"><span class="toc-number">1.2.</span> <span class="toc-text">1.2</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3"><span class="toc-number">2.</span> <span class="toc-text">1.3</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9B%9B%E4%BB%B6%E5%A5%97%EF%BC%9A"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">四件套：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-III"><span class="toc-number">3.</span> <span class="toc-text">Chapter III</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1"><span class="toc-number">4.</span> <span class="toc-text">3.1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90%E3%80%81%E7%9B%B8%E4%BC%BC%E5%BA%A6%E5%88%86%E6%9E%90%E7%AD%89%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-number">4.1.</span> <span class="toc-text">3.1.1 情感分析、相似度分析等任务的本质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-%E5%AE%8C%E5%9E%8B%E5%A1%AB%E7%A9%BA%E3%80%81%E5%AE%9E%E4%BD%93%E8%AF%8D%E8%AF%86%E5%88%AB%EF%BC%88NER%EF%BC%89%E7%AD%89%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-number">4.2.</span> <span class="toc-text">3.1.2 完型填空、实体词识别（NER）等任务的本质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-3-%E6%96%87%E7%AB%A0%E6%91%98%E8%A6%81%E4%BB%BB%E5%8A%A1%E3%80%81%E9%97%AE%E7%AD%94%E4%BB%BB%E5%8A%A1%E3%80%81%E7%BF%BB%E8%AF%91%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-number">4.3.</span> <span class="toc-text">3.1.3 文章摘要任务、问答任务、翻译任务的本质</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%E5%8C%85"><span class="toc-number">4.3.0.1.</span> <span class="toc-text">自然语言处理工具包</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%E5%B7%A5%E5%85%B7"><span class="toc-number">4.3.0.2.</span> <span class="toc-text">中文分词工具</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E8%BD%AC%E6%8B%BC%E9%9F%B3%E5%B7%A5%E5%85%B7"><span class="toc-number">4.3.0.3.</span> <span class="toc-text">中文转拼音工具</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E7%BF%BB%E8%AF%91%E8%B4%A8%E9%87%8F%E7%9A%84%E7%AE%97%E6%B3%95%E5%BA%93%E2%80%94%E2%80%94SacreBLEU"><span class="toc-number">4.3.0.4.</span> <span class="toc-text">评估翻译质量的算法库——SacreBLEU</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%80%9F%E5%8A%A9Unicode%E5%A4%84%E7%90%86%E4%B8%AD%E6%96%87%E5%AD%97%E7%AC%A6%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">4.3.0.5.</span> <span class="toc-text">借助Unicode处理中文字符的常用操作</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-4-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BE%9D%E5%AD%98%E5%85%B3%E7%B3%BB%E5%88%86%E6%9E%90"><span class="toc-number">4.4.</span> <span class="toc-text">3.4.4 什么是依存关系分析</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%BC%A7%E7%BA%BF%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="toc-number">4.4.0.1.</span> <span class="toc-text">弧线的解释</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%AF%8D%E6%80%A7%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="toc-number">4.4.0.2.</span> <span class="toc-text">词性的解释</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BE%9D%E5%AD%98%E5%85%B3%E7%B3%BB%E7%9A%84%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="toc-number">4.4.0.3.</span> <span class="toc-text">依存关系的内部结构</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-5-TF-IDF"><span class="toc-number">4.5.</span> <span class="toc-text">3.4.5 TF-IDF</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-V"><span class="toc-number">5.</span> <span class="toc-text">Chapter V</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-3-%E5%BC%A0%E9%87%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">5.1.</span> <span class="toc-text">5.3.3 张量的基本操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-4-%E5%9C%A8CPU%E5%92%8CGPU%E6%8E%A7%E5%88%B6%E7%9A%84%E5%86%85%E5%AD%98%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%BC%A0%E9%87%8F"><span class="toc-number">5.2.</span> <span class="toc-text">5.3.4 在CPU和GPU控制的内存中定义张量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-5-%E5%BC%A0%E9%87%8F%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">5.3.</span> <span class="toc-text">5.3.5 张量间的数据操作</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式"><img src="/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design_pattern.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设计模式"/></a><div class="content"><a class="title" href="/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式">设计模式</a><time datetime="2023-12-19T16:38:53.758Z" title="Created 2023-12-19 08:38:53">2023-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Hello%20World/" title="Hello World"><img src="/Hello%20World/Ulchiha.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/Hello%20World/" title="Hello World">Hello World</a><time datetime="2023-12-19T16:38:53.608Z" title="Created 2023-12-19 08:38:53">2023-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Class%20Diagram/" title="Class Diagram"><img src="/Class%20Diagram/design_pattern.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Class Diagram"/></a><div class="content"><a class="title" href="/Class%20Diagram/" title="Class Diagram">Class Diagram</a><time datetime="2023-12-19T16:38:53.606Z" title="Created 2023-12-19 08:38:53">2023-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Non-deterministic-Polynomial/" title="Non-deterministic_Polynomial"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Non-deterministic_Polynomial"/></a><div class="content"><a class="title" href="/Non-deterministic-Polynomial/" title="Non-deterministic_Polynomial">Non-deterministic_Polynomial</a><time datetime="2022-09-17T04:55:15.000Z" title="Created 2022-09-16 21:55:15">2022-09-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Markdown/" title="Markdown"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Markdown"/></a><div class="content"><a class="title" href="/Markdown/" title="Markdown">Markdown</a><time datetime="2022-09-17T04:52:00.000Z" title="Created 2022-09-16 21:52:00">2022-09-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By ChengQiang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
