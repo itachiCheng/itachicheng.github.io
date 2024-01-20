@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Markdown/</loc>
+    <loc>https://itachicheng.github.io/Linux-History/</loc>
     
     <lastmod>2023-12-19</lastmod>
     
@@ -110,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Linux-History/</loc>
+    <loc>https://itachicheng.github.io/Markdown/</loc>
     
     <lastmod>2023-12-19</lastmod>
     
@@ -128,15 +128,6 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Hello%20World/</loc>
-    
-    <lastmod>2023-12-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://itachicheng.github.io/Git/</loc>
     
     <lastmod>2023-12-19</lastmod>
@@ -146,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Economy/</loc>
+    <loc>https://itachicheng.github.io/Hello%20World/</loc>
     
     <lastmod>2023-12-19</lastmod>
     
@@ -173,7 +164,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Class%20Diagram/</loc>
+    <loc>https://itachicheng.github.io/Economy/</loc>
     
     <lastmod>2023-12-19</lastmod>
     
@@ -192,6 +183,15 @@
   
   <url>
     <loc>https://itachicheng.github.io/Autobiography/</loc>
+    
+    <lastmod>2023-12-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/Class%20Diagram/</loc>
     
     <lastmod>2023-12-19</lastmod>
     
@@ -232,28 +232,7 @@
 
   
   <url>
-    <loc>https://itachicheng.github.io/categories/Software-Engineering/</loc>
-    <lastmod>2024-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://itachicheng.github.io/categories/Machine-Learning/</loc>
-    <lastmod>2024-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://itachicheng.github.io/categories/Hexo-Guide/</loc>
-    <lastmod>2024-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://itachicheng.github.io/categories/Yesterday/</loc>
     <lastmod>2024-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -267,6 +246,27 @@
   </url>
   
   <url>
+    <loc>https://itachicheng.github.io/categories/Yesterday/</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/categories/Hexo-Guide/</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/categories/Software-Engineering/</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://itachicheng.github.io/categories/Computer-History/</loc>
     <lastmod>2024-01-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -274,21 +274,14 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/categories/SQL/</loc>
-    <lastmod>2024-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://itachicheng.github.io/categories/Tool/</loc>
-    <lastmod>2024-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://itachicheng.github.io/categories/Coding/</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/categories/SQL/</loc>
     <lastmod>2024-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -303,6 +296,13 @@
   
   <url>
     <loc>https://itachicheng.github.io/categories/Life/</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/categories/Tool/</loc>
     <lastmod>2024-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
