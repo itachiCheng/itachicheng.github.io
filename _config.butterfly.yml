@@ -83,8 +83,9 @@ katex:
 favicon: /img/favicon.png
 
 # Avatar (頭像)
+## 如果找不到，则会应用/img/friend_404.gif
 avatar:
-  img: /img/Ulchiha.png
+  img: /img/loopy2.jpg
   effect: false
 
 # Disable all banner image
