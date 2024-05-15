@@ -6,7 +6,7 @@
   <link href="https://itachicheng.github.io/atom.xml" rel="self"/>
   
   <link href="https://itachicheng.github.io/"/>
-  <updated>2023-12-19T16:38:53.758Z</updated>
+  <updated>2024-05-15T16:23:49.125Z</updated>
   <id>https://itachicheng.github.io/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MST</title>
+    <link href="https://itachicheng.github.io/MST/"/>
+    <id>https://itachicheng.github.io/MST/</id>
+    <published>2024-05-12T09:54:28.000Z</published>
+    <updated>2024-05-15T16:23:49.125Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>设计模式</title>
@@ -455,30 +468,6 @@
     
     
     <category term="SQL" scheme="https://itachicheng.github.io/categories/SQL/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Docker</title>
-    <link href="https://itachicheng.github.io/Docker/"/>
-    <id>https://itachicheng.github.io/Docker/</id>
-    <published>2022-01-10T06:55:44.000Z</published>
-    <updated>2023-12-19T16:38:53.607Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><a href="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe">Download Docker</a><br>docker 下载地址，点击OK即可，稍等完成下载。<br><img src="docker_install_1.png" alt="img.png"></li><li>Enable the WSL 2 feature on Windows</li></ul><p>最近工作中接触了docker，开始试着敲了一些docker指令。</p><p><code>docker images</code>：列出docker镜像</p><p><code>docker ps</code>: 列出当前正在运行的docker容器</p><p><code>docker cp .../ .../ </code>：从宿主机或docker容器中拷贝文件到docker容器或宿主机当中</p><p><code>docker start containerId</code> ：启动docker容器</p><p><code>docker attach containerId</code>：进入docker容器</p><p>我想这相当于最基本的查看操作，同时借鉴面向对象中类和实例的关系，对docker的理解停留在抽象层。想钻研其背景，多看总是很好的途径。</p><center>卷一</center><h6 id="Docker-versus-virtual-machines">Docker versus virtual machines</h6><p><code>Docker is just cgroups and namespace wrappedd up.</code> 这句话出自<a href="https://www.docker.com/blog/investing-in-performance-trust-and-great-experiences-for-developers/">JUSTIN CORMACK</a> ，他认为从docker这九年来发展来看，重要的远不止这些。<code>docker run -it ubuntu</code>The time-to-magic is so short, and there is so much you can build on from there.<br>的确，现在围绕Docker, Kubernetes 和 更加广泛的云原生运动正在展开。</p><p>Docker处于现代软件供应链的核心，并且有三个方向值得努力——Performance、Trust and Experience.</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe&quot;&gt;Download Docker&lt;/a&gt;&lt;br&gt;
-docker 下载地址，点击OK即可，稍等完</summary>
-      
-    
-    
-    
-    <category term="Docker" scheme="https://itachicheng.github.io/categories/Docker/"/>
     
     
   </entry>
