@@ -80,7 +80,7 @@ katex:
 # --------------------------------------
 
 # Favicon（網站圖標）
-favicon: /img/favicon.png
+favicon: /img/Ulchiha.png
 
 # Avatar (頭像)
 ## 如果找不到，则会应用/img/friend_404.gif
@@ -92,7 +92,7 @@ avatar:
 disable_top_img: false
 
 # The banner image of home page
-index_img: /img/back_ground2.jpg
+index_img: /img/torch.png
 
 # If the banner of page not setting, it will show the top_img
 default_top_img:
