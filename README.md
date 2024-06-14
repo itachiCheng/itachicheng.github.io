@@ -47,3 +47,32 @@
    
 3. **hexo server**可以本地拉起**localhost:4000**的博客服务。
 
+### 个性化配置
+
+1. 修改_config.butterfly.yml文件，包含各种封面、图片、组件配置，修改完成后可以通过以下命令推送。
+
+   ```shell
+   git add -A
+   git commit -m "Your Commit" 
+   git push origin srcbuild
+   ```
+
+2. 图片素材可以添加至themes/butterfly/source/img/路径下，素材文件可单独推送至hexo-theme-butterfly仓。
+
+   ```shell
+   cd themes/butterfly
+   git add -A
+   git commit -m "Your Commit"
+   git push origin dev
+   ```
+
+### 生成部署
+
+1. 重新定位至itachi.github.io文件夹
+
+2. 生成网页并推送部署
+
+   ```shell
+   hexo clean
+   hexo generate && hexo deploy
+   ```
