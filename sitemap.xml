@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://itachicheng.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>https://itachicheng.github.io/about/index.html</loc>
     
     <lastmod>2024-06-14</lastmod>
     
@@ -11,7 +11,34 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/kdd2022/</loc>
+    <loc>https://itachicheng.github.io/link/index.html</loc>
+    
+    <lastmod>2024-06-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/categories/index.html</loc>
+    
+    <lastmod>2024-06-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/tags/index.html</loc>
+    
+    <lastmod>2024-06-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
     
     <lastmod>2024-06-14</lastmod>
     
@@ -38,6 +65,15 @@
   </url>
   
   <url>
+    <loc>https://itachicheng.github.io/kdd2022/</loc>
+    
+    <lastmod>2024-06-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://itachicheng.github.io/Util/</loc>
     
     <lastmod>2024-06-14</lastmod>
@@ -47,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Visualization/</loc>
+    <loc>https://itachicheng.github.io/cookbook/</loc>
     
     <lastmod>2024-06-14</lastmod>
     
@@ -56,7 +92,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/cookbook/</loc>
+    <loc>https://itachicheng.github.io/Visualization/</loc>
     
     <lastmod>2024-06-14</lastmod>
     
@@ -137,6 +173,15 @@
   </url>
   
   <url>
+    <loc>https://itachicheng.github.io/Flask/</loc>
+    
+    <lastmod>2024-06-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://itachicheng.github.io/Git/</loc>
     
     <lastmod>2024-06-14</lastmod>
@@ -147,24 +192,6 @@
   
   <url>
     <loc>https://itachicheng.github.io/Economy/</loc>
-    
-    <lastmod>2024-06-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://itachicheng.github.io/Flask/</loc>
-    
-    <lastmod>2024-06-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://itachicheng.github.io/Memory-HangZhou/</loc>
     
     <lastmod>2024-06-14</lastmod>
     
@@ -192,6 +219,15 @@
   
   <url>
     <loc>https://itachicheng.github.io/Markdown/</loc>
+    
+    <lastmod>2024-06-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/Memory-HangZhou/</loc>
     
     <lastmod>2024-06-14</lastmod>
     
@@ -281,14 +317,14 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/categories/Data-Mining/</loc>
+    <loc>https://itachicheng.github.io/categories/Life/</loc>
     <lastmod>2024-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/categories/Life/</loc>
+    <loc>https://itachicheng.github.io/categories/Data-Mining/</loc>
     <lastmod>2024-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
