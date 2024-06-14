@@ -43,7 +43,7 @@
    cd ../../
    ```
    
-   Note: 当前主题fork于https://github.com/jerryc127/hexo-theme-butterfly.git，如果需要个性化，那么请修改.gitsubmodules,自行维护个性化主题修改 。
+   **Note**: 当前主题fork于**jerryc127/hexo-theme-butterfly.git**，如果需要个性化，那么请修改**.gitsubmodules**,自行维护个性化主题修改 。
    
 3. **hexo server**可以本地拉起**localhost:4000**的博客服务。
 
