@@ -49,7 +49,9 @@
 
 ### 个性化配置
 
-1. 修改_config.butterfly.yml文件，包含各种封面、图片、组件配置，修改完成后可以通过以下命令推送。
+1. 修改_config.butterfly.yml文件，包含各种封面、图片、组件配置。
+
+2. 通过`hexo new "My New Post"`可以生成Markdown文件以及资料文件夹，资料编辑完成后，可以通过以下方式提交。
 
    ```shell
    git add -A
@@ -57,7 +59,7 @@
    git push origin srcbuild
    ```
 
-2. 图片素材可以添加至themes/butterfly/source/img/路径下，素材文件可单独推送至hexo-theme-butterfly仓。
+3. 图片素材可以添加至themes/butterfly/source/img/路径下，素材文件可单独推送至hexo-theme-butterfly仓。
 
    ```shell
    cd themes/butterfly
