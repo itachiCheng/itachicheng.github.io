@@ -10,7 +10,7 @@
 
    ```shell
    ## git clone本项目srcbuild分支
-   git clone https://github.com/itachiCheng/itachicheng.github.io.git -b srcbuild 
+   git clone --recurse-submodules https://github.com/itachiCheng/itachicheng.github.io.git -b srcbuild 
    ## 下载相关node_modules依赖
    hexo init blog
    ## 拷贝blog/node_modules至itachicheng.github.io目录
@@ -19,8 +19,11 @@
    cd ./itachicheng.github.io
    npm install
    npm install --save hexo-renderer-jade hexo-generator-feed hexo-generator-sitemap hexo-browsersync hexo-generator-archive hexo-renderer-pug hexo-renderer-stylus
-   ## 选用butterfly主题
-   git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly
+   ## 更新butterfly主题
+   cd themes/butterfly/
+   git fetch origin dev
+   git rebase origin/dev
+   cd ../../
    ```
    
 3. **hexo server**可以本地拉起**localhost:4000**的博客服务。
