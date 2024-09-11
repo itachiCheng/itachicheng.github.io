@@ -37,6 +37,26 @@
   </entry>
   
   <entry>
+    <title>Aliyun_Server</title>
+    <link href="https://itachicheng.github.io/Aliyun-Server/Aliyun-Server/"/>
+    <id>https://itachicheng.github.io/Aliyun-Server/Aliyun-Server/</id>
+    <published>2024-09-11T03:23:07.000Z</published>
+    <updated>2024-09-11T05:05:36.513Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/fatedier/frp">frp</a> 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议，且支持 P2P 通信。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网。</p><h3 id="云服务器侧frp配置">云服务器侧frp配置</h3><ul><li><h4 id="查看服务器防火墙状态">查看服务器防火墙状态</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Ubuntu</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Centos</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开放部分端口</span></span><br></pre></td></tr></table></figure></li><li><p>阿里云安全组设置开启外部访问端口</p></li><li><p>下载对应frp版本</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/fatedier/frp/releases/download/v0.49.0/frp_0.49.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure></li><li><p>解压并修改配置文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf frp_0.49.0_linux_amd64.tar.gz</span><br><span class="line"></span><br><span class="line">cd frp_0.49.0_linux_amd64/</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 服务器端设置frps.ini</span></span></span><br><span class="line">vim frps.ini</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 设置选项，保存退出</span></span></span><br><span class="line">[common]</span><br><span class="line">bind_port = xxxx</span><br><span class="line">dashboard_port = ####</span><br><span class="line">dashboard_user = ####</span><br><span class="line">dashboard_pwd = ####</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 后台运行</span></span></span><br><span class="line">nohup ./frps -c ./frps.ini &amp;</span><br></pre></td></tr></table></figure></li></ul><h3 id="本地客户端frp配置">本地客户端frp配置</h3><ul><li><p>下载对应frp版本并解压</p><p>浏览器下载：<a href="https://github.com/fatedier/frp/releases/download/v0.49.0/frp_0.49.0_windows_amd64.zip">https://github.com/fatedier/frp/releases/download/v0.49.0/frp_0.49.0_windows_amd64.zip</a></p></li><li><p>新建frpc.bat</p><p>路径：C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\frpc.bat</p></li><li><p>编写自启动文件frpc.bat</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmd /c D:\Tools\FRP\frp_0.49.0_windows_amd64\frp_0.49.0_windows_amd64\frpc.exe -c D:\Tools\FRP\frp_0.49.0_windows_amd64\frp_0.49.0_windows_amd64\frpc.ini</span><br><span class="line"></span><br></pre></td></tr></table></figure></li><li><p>添加配置选项</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server<span class="emphasis">_addr = 云服务器上的公网ip</span></span><br><span class="line"><span class="emphasis">server_</span>port = xxxx （同上bind<span class="emphasis">_port）</span></span><br><span class="line"><span class="emphasis">[RDP]</span></span><br><span class="line"><span class="emphasis">type = tcp</span></span><br><span class="line"><span class="emphasis">local_</span>ip = 127.0.0.1</span><br><span class="line">local<span class="emphasis">_port = #### （本地开放端口）</span></span><br><span class="line"><span class="emphasis">remote_</span>port = #### （外部可访问端口）</span><br><span class="line"></span><br></pre></td></tr></table></figure></li></ul><p>通过以上配置可以用于windows远程桌面连接，透过windows本身在的局域网。</p><h3 id="Jupyter-Notebook服务器挂载">Jupyter Notebook服务器挂载</h3><ul><li><h4 id="基础Conda环境安装">基础Conda环境安装</h4><p>miniconda下载，并通过sh执行，创建并初始化Conda环境。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(base)computer_name:path#  pip install jupyter</span><br></pre></td></tr></table></figure></li><li><h4 id="Jupyter-Notebook配置文件并修改">Jupyter Notebook配置文件并修改</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 修改配置文件</span></span></span><br><span class="line">vim /root/.jupyter/jupyter_notebook_config.py</span><br><span class="line"></span><br><span class="line">c.#####.notebook_dir = &quot;/path/to/file&quot;</span><br><span class="line">c.#####.password_required = True</span><br><span class="line">c.#####.port = PPPP（需要在安全组和防火墙中开放端口）</span><br><span class="line">c.#####.ip = xxx.xxx.xxx.xxx（阿里云服务器中的私有ip，公有ip用于外部访问，私有ip用于拉起服务）</span><br><span class="line"></span><br></pre></td></tr></table></figure></li><li><h4 id="开启Jupyter-Notebook服务">开启Jupyter Notebook服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 配置jupyter notebook密码</span></span></span><br><span class="line">jupyter notebook password</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 输入密码</span></span></span><br><span class="line">Enter password: XXXXXX</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 开启服务</span></span></span><br><span class="line">nohup jupyter notebook --allow-root &amp;</span><br></pre></td></tr></table></figure></li><li><h4 id="外部访问登陆界面">外部访问登陆界面</h4><p>浏览器输入 ：<a href="http://xn--ip-xz4cu9bf8io83arv1b">http://服务器公网ip</a>:PPPP</p><p><img src="./Aliyun-Server.assets/jupyter_notebook_login.png" alt="jupyter notebook login"></p><p>密码输入（同<code>Enter password</code>）。</p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/fatedier/frp&quot;&gt;frp&lt;/a&gt; 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议，且支持 P2P 通信。可以将内网服务以安全、便捷的方式通过具有公网 IP </summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>DeePMD-kit</title>
     <link href="https://itachicheng.github.io/DeePMD-kit/"/>
     <id>https://itachicheng.github.io/DeePMD-kit/</id>
@@ -445,31 +465,6 @@
     
     
     <category term="Autobiography" scheme="https://itachicheng.github.io/tags/Autobiography/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Treasure</title>
-    <link href="https://itachicheng.github.io/Util/"/>
-    <id>https://itachicheng.github.io/Util/</id>
-    <published>2022-01-23T10:13:45.000Z</published>
-    <updated>2024-06-15T08:19:21.806Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="导言">导言</h3><p>堪比“吃饭睡觉”的习惯，信息化时代的良好素养。</p><h3 id="Typing-Club"><a href="https://www.typingclub.com/">Typing Club</a></h3><p>盲打练习网站，珍惜时间就是珍爱生命</p><h3 id="Chrome-Shortcut">Chrome Shortcut</h3><p>谷歌浏览器Windows和Linux快捷键列表</p><table><thead><tr><th><strong>操作</strong></th><th><strong>快捷键</strong></th></tr></thead><tbody><tr><td>打开新窗口</td><td><strong>Ctrl + n</strong></td></tr><tr><td>在无痕模式下打开新窗口</td><td><strong>Ctrl + Shift + n</strong></td></tr><tr><td><strong>打开新的标签页，并跳转到该标签页</strong></td><td><strong>Ctrl + t</strong></td></tr><tr><td>按标签页的关闭顺序重新打开先前关闭的标签页</td><td><strong>Ctrl + Shift + t</strong></td></tr><tr><td>跳转到下一个打开的标签页</td><td><strong>Ctrl + Tab</strong> 或 <strong>Ctrl + PgDn</strong></td></tr><tr><td>跳转到上一个打开的标签页</td><td><strong>Ctrl + Shift + Tab</strong> 或 <strong>Ctrl + PgUp</strong></td></tr><tr><td><strong>跳转到特定标签页</strong></td><td><strong>Ctrl + 1</strong> 到 <strong>Ctrl + 8</strong></td></tr><tr><td>跳转到最右侧的那个标签页</td><td><strong>Ctrl + 9</strong></td></tr><tr><td><strong>在当前标签页中打开主页</strong></td><td><strong>Alt + Home</strong></td></tr><tr><td>打开当前标签页浏览记录中记录的上一个页面</td><td><strong>Alt + 向左箭头键</strong></td></tr><tr><td>打开当前标签页浏览记录中记录的下一个页面</td><td><strong>Alt + 向右箭头键</strong></td></tr><tr><td><strong>关闭当前标签页</strong></td><td><strong>Ctrl + w</strong> 或 <strong>Ctrl + F4</strong></td></tr><tr><td>关闭当前窗口</td><td><strong>Ctrl + Shift + w</strong> 或 <strong>Alt + F4</strong></td></tr><tr><td>最小化当前窗口</td><td><strong>Alt + 空格键</strong>，然后按 <strong>n</strong> 键</td></tr><tr><td>最大化当前窗口</td><td><strong>Alt + 空格键</strong>，然后按 <strong>x</strong> 键</td></tr><tr><td>退出 Google Chrome</td><td><strong>Alt + f</strong>，然后按 <strong>x</strong> 键</td></tr><tr><td>使用键盘焦点向右或向左移动标签页</td><td><strong>Ctrl</strong> + <strong>向右键</strong>或 <strong>Ctrl</strong> + <strong>向左键</strong></td></tr></tbody></table>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;导言&quot;&gt;导言&lt;/h3&gt;
-&lt;p&gt;堪比“吃饭睡觉”的习惯，信息化时代的良好素养。&lt;/p&gt;
-&lt;h3 id=&quot;Typing-Club&quot;&gt;&lt;a href=&quot;https://www.typingclub.com/&quot;&gt;Typing Club&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;盲打练习网站</summary>
-      
-    
-    
-    
-    <category term="Tool" scheme="https://itachicheng.github.io/categories/Tool/"/>
-    
     
   </entry>
   
