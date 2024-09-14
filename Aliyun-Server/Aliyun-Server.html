@@ -1,0 +1,117 @@
+<hr>
+<h2 id="title-Aliyun-Serverdate-2024-09-11-11-23-07tags">title: Aliyun_Server<br>
+date: 2024-09-11 11:23:07<br>
+tags:</h2>
+<p><a href="https://github.com/fatedier/frp">frp</a> 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议，且支持 P2P 通信。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网。</p>
+<h3 id="云服务器侧frp配置">云服务器侧frp配置</h3>
+<ul>
+<li>
+<h4 id="查看服务器防火墙状态">查看服务器防火墙状态</h4>
+<pre><code class="language-shell"># Ubuntu
+
+# Centos
+
+# 开放部分端口
+</code></pre>
+</li>
+<li>
+<p>阿里云安全组设置开启外部访问端口</p>
+</li>
+<li>
+<p>下载对应frp版本</p>
+<pre><code class="language-shell">wget https://github.com/fatedier/frp/releases/download/v0.49.0/frp_0.49.0_linux_amd64.tar.gz
+</code></pre>
+</li>
+<li>
+<p>解压并修改配置文件</p>
+<pre><code class="language-shell">tar -xvf frp_0.49.0_linux_amd64.tar.gz
+
+cd frp_0.49.0_linux_amd64/
+
+## 服务器端设置frps.ini
+vim frps.ini
+
+## 设置选项，保存退出
+[common]
+bind_port = xxxx
+dashboard_port = ####
+dashboard_user = ####
+dashboard_pwd = ####
+
+## 后台运行
+nohup ./frps -c ./frps.ini &amp;
+</code></pre>
+</li>
+</ul>
+<h3 id="本地客户端frp配置">本地客户端frp配置</h3>
+<ul>
+<li>
+<p>下载对应frp版本并解压</p>
+<p>浏览器下载：<a href="https://github.com/fatedier/frp/releases/download/v0.49.0/frp_0.49.0_windows_amd64.zip">https://github.com/fatedier/frp/releases/download/v0.49.0/frp_0.49.0_windows_amd64.zip</a></p>
+</li>
+<li>
+<p>新建frpc.bat</p>
+<p>路径：C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\frpc.bat</p>
+</li>
+<li>
+<p>编写自启动文件frpc.bat</p>
+<pre><code class="language-shell">cmd /c D:\Tools\FRP\frp_0.49.0_windows_amd64\frp_0.49.0_windows_amd64\frpc.exe -c D:\Tools\FRP\frp_0.49.0_windows_amd64\frp_0.49.0_windows_amd64\frpc.ini
+
+</code></pre>
+</li>
+<li>
+<p>添加配置选项</p>
+<pre><code class="language-markdown">[common]
+server_addr = 云服务器上的公网ip
+server_port = xxxx （同上bind_port）
+[RDP]
+type = tcp
+local_ip = 127.0.0.1
+local_port = #### （本地开放端口）
+remote_port = #### （外部可访问端口）
+
+</code></pre>
+</li>
+</ul>
+<p>通过以上配置可以用于windows远程桌面连接，透过windows本身在的局域网。</p>
+<h3 id="Jupyter-Notebook服务器挂载">Jupyter Notebook服务器挂载</h3>
+<ul>
+<li>
+<h4 id="基础Conda环境安装">基础Conda环境安装</h4>
+<p>miniconda下载，并通过sh执行，创建并初始化Conda环境。</p>
+<pre><code class="language-shell">(base)computer_name:path#  pip install jupyter
+</code></pre>
+</li>
+<li>
+<h4 id="Jupyter-Notebook配置文件并修改">Jupyter Notebook配置文件并修改</h4>
+<pre><code class="language-shell">jupyter notebook --generate-config
+
+## 修改配置文件
+vim /root/.jupyter/jupyter_notebook_config.py
+
+c.#####.notebook_dir = &quot;/path/to/file&quot;
+c.#####.password_required = True
+c.#####.port = PPPP（需要在安全组和防火墙中开放端口）
+c.#####.ip = xxx.xxx.xxx.xxx（阿里云服务器中的私有ip，公有ip用于外部访问，私有ip用于拉起服务）
+
+</code></pre>
+</li>
+<li>
+<h4 id="开启Jupyter-Notebook服务">开启Jupyter Notebook服务</h4>
+<pre><code class="language-shell">## 配置jupyter notebook密码
+jupyter notebook password
+
+## 输入密码
+Enter password: XXXXXX
+
+## 开启服务
+nohup jupyter notebook --allow-root &amp;
+</code></pre>
+</li>
+<li>
+<h4 id="外部访问登陆界面">外部访问登陆界面</h4>
+<p>浏览器输入 ：<a href="http://xn--ip-xz4cu9bf8io83arv1b">http://服务器公网ip</a>:PPPP</p>
+<p><img src="./Aliyun-Server.assets/jupyter_notebook_login.png" alt="jupyter notebook login"></p>
+<p>密码输入（同<code>Enter password</code>）。</p>
+</li>
+</ul>
