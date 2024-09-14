@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Aliyun-Server/Aliyun-Server/</loc>
-    
-    <lastmod>2024-09-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://itachicheng.github.io/DeePMD-kit/</loc>
     
     <lastmod>2024-09-11</lastmod>
@@ -146,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Non-deterministic-Polynomial/</loc>
+    <loc>https://itachicheng.github.io/Pythonic/</loc>
     
     <lastmod>2024-06-15</lastmod>
     
@@ -155,7 +146,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Pythonic/</loc>
+    <loc>https://itachicheng.github.io/Non-deterministic-Polynomial/</loc>
     
     <lastmod>2024-06-15</lastmod>
     
@@ -209,15 +200,6 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Economy/</loc>
-    
-    <lastmod>2024-06-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://itachicheng.github.io/Flask/</loc>
     
     <lastmod>2024-06-15</lastmod>
@@ -227,7 +209,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Class%20Diagram/</loc>
+    <loc>https://itachicheng.github.io/Economy/</loc>
     
     <lastmod>2024-06-15</lastmod>
     
@@ -237,6 +219,15 @@
   
   <url>
     <loc>https://itachicheng.github.io/Docker/</loc>
+    
+    <lastmod>2024-06-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/Class%20Diagram/</loc>
     
     <lastmod>2024-06-15</lastmod>
     
@@ -309,13 +300,6 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/categories/Software-Engineering/</loc>
-    <lastmod>2024-09-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://itachicheng.github.io/categories/Docker/</loc>
     <lastmod>2024-09-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -323,14 +307,14 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/categories/Computer-History/</loc>
+    <loc>https://itachicheng.github.io/categories/Software-Engineering/</loc>
     <lastmod>2024-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/categories/SQL/</loc>
+    <loc>https://itachicheng.github.io/categories/Computer-History/</loc>
     <lastmod>2024-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -345,6 +329,13 @@
   
   <url>
     <loc>https://itachicheng.github.io/categories/Data-Mining/</loc>
+    <lastmod>2024-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/categories/SQL/</loc>
     <lastmod>2024-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
