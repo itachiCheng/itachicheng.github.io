@@ -17,13 +17,13 @@ $$
 其中，$q\in{R^d}$是一个d维的向量，$keys$和$values$分别是d维向量组成的序列，例如，$k_1,...,k_n$和$v_1,...,v_n$,序列长度为$n$，可以对Attention的计算进行可视化：
 
 ![image-20240922234546414](./Self-Attention-for-Memory-Efficiency.assets/image-20240922234546414.png)
-![image-20240922234612296](.\Self-Attention-for-Memory-Efficiency.assets\image-20240922234612296.png)
+![image-20240922234612296](./Self-Attention-for-Memory-Efficiency.assets/image-20240922234612296.png)
 
 在求解attention（Q， K，V）的整个过程中，如果将d视为常数，那么空间复杂度为O（n）。实际上，n这个维度可以看成时间延展，通过时间换空间，可以仅在（1，d）的size上做累加计算得到atten。而对应的**Self-Attention**，尽管query另一维度也可以拓展到n维，但实现的空间复杂度也不需要$O(n^2)$。这也是Flash-Attention的基本思想。
 
-![image-20240923001802231](.\Self-Attention-for-Memory-Efficiency.assets\image-20240923001802231.png)
+![image-20240923001802231](./Self-Attention-for-Memory-Efficiency.assets/image-20240923001802231.png)
 
-![image-20240923001916003](.\Self-Attention-for-Memory-Efficiency.assets\image-20240923001916003.png)
+![image-20240923001916003](./Self-Attention-for-Memory-Efficiency.assets/image-20240923001916003.png)
 
 合理利用HBM以及SRAM的存储可以使attention变得内存高效，其中在K,V维度的切分，形成外层循环，Q维度的切分，形成内层循环。
 
