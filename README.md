@@ -2,7 +2,7 @@
 
 ---
 
-### 初始化
+### T1 初始化
 
 1. 安装[Node.js](https://nodejs.org/en)后，通过**npm install hexo-cli -g**嵌入**hexo**。
 
@@ -47,7 +47,7 @@
    
 3. **hexo server**可以本地拉起**localhost:4000**的博客服务。
 
-### 个性化配置
+### T2 个性化配置
 
 1. 修改_config.butterfly.yml文件，包含各种封面、图片、组件配置。
 
@@ -68,7 +68,7 @@
    git push origin dev
    ```
 
-### 生成部署
+### T3 生成部署
 
 1. 重新定位至itachi.github.io文件夹
 
@@ -79,4 +79,18 @@
    hexo generate && hexo deploy
    ```
    
+
+### T4 分布式协作
+
+1. 拉取最新分支
+
+   ```shell
+   # 配置代理（可选）
+   git config --global http.proxy http://127.0.0.1:xxxx
+   git config --global https.proxy http://127.0.0.1:xxxx
    
+   git fetch or git -c http.proxy="127.0.0.1:xxxx" fetch origin
+   git rebase origin/srcbuild
+   ```
+
+2. commit提交（同T2.2）
