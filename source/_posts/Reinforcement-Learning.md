@@ -12,6 +12,3 @@ tags:
 - "RL is the third camp and lays somewhere in between full supervision and a complete lack of predefined labels. "
 
 强化学习是在回答诸如“how”的问题，有监督学习是在回答诸如“what”的问题。
-
-
-
