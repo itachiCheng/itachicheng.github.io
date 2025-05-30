@@ -21,7 +21,7 @@ cover: cookbook/cookbook.jpg
 
 ![](suanrong_1.jpg)
 
-   
+
 - 开始腌制
 
 1. 适量料酒（约3克）；
@@ -90,7 +90,7 @@ cover: cookbook/cookbook.jpg
    - 清洗去除血水；
 ![](shuizhuniurou_3.jpg)
      
-    
+   
 
 - 辅料
 1. 玉米淀粉（约2克）
@@ -135,10 +135,10 @@ cover: cookbook/cookbook.jpg
     - 技术难点
     
       豆腐煎6分钟后第一次翻面，非常考验对锅的控制，不少豆腐挤成一团，如上所示；
-    
-
+  
 - 成品展示
   
+
 ![](jiachangdoufu_4.jpg)
 
 

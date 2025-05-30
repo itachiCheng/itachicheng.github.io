@@ -89,8 +89,15 @@
    git config --global http.proxy http://127.0.0.1:xxxx
    git config --global https.proxy http://127.0.0.1:xxxx
    
+   (如本地有未提交更新)
+   git stash save as YOUR_NAME
+   
    git fetch or git -c http.proxy="127.0.0.1:xxxx" fetch origin
    git rebase origin/srcbuild
+   
+   (如本地有暂存更新，可能面临解决冲突)
+   git stash pop
+   
    ```
 
 2. commit提交（同T2.2）
