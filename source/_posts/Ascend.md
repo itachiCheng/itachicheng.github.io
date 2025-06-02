@@ -24,7 +24,140 @@ Ascend C __global__ __aicore__ void kernel_name(argument list);
 CUDA __global__ void kernel_name(argument list);
 ```
 
+### DaVinci Core
+
+
+
 ### AI Core的逻辑架构抽象
+
+
+
+### AI Core内部并行计算架构抽象
+
+- 计算单元
+
+  Scalar计算单元：执行地址计算、循环控制等标量计算工作，并把向量计算、矩阵计算、数据搬运、同步指令发射给对应单元执行
+
+  Cube计算单元：负责执行矩阵计算
+
+  Vector计算单元：负责执行向量计算
+
+- 搬运单元
+
+  负责在Global Memory和Local Memory之间搬运数据
+
+  MTE1——数据在AI Core内部的流转
+
+  MTE2——数据搬入单元
+
+  MTE3——数据搬出单元
+
+- 存储单元
+
+  编程对象，数据主体
+
+  外部存储：Global Memory
+
+  ```C++
+  void Init(__gm__ uint8 *__restrict__ src_gm, __gm__ uint8_t *__restrict__ dst_gm)
+  {
+    uint32_t dataSize = 256;
+    GlobalTensor<int32_t> inputGlobal;// 类型为int32_t
+    // 设置源操作数在Global Memory上的起始地址为src_gm,所占外部存储的大小为256个int32_t
+    inputGlobal.SetGlobalBuffer(reinterpret_cast<__gm__ int32_t *>(src_gm), dataSize);
+    
+  }
+  ```
+
+  内部存储：Local Memory 
+
+  ```C++
+  template <typename T> class LocalTensor {
+    T GetValue(const uint32_t offset) const; // 获取LocalTensor中的某个值，返回T类型的立即数。
+    // 获取距原LocalTensor起始地址偏移量为offset的新LocalTensor，注意offset不能超过原有LocalTensor的size大小。offset单位为element
+    LocalTensor operator[](const uint32_t offset) const;
+    uint32_t GetSize() const; // 获取当前LocalTensor size大小
+  }
+  ```
+
+  LocalTensor指代的是AI Core内部的存储，不同的流水任务之间存在数据依赖，需要进行数据传递。Ascend C中使用Queue队列完成任务之间的数据通信和同步，例如在Compute之前完成CopyIn的数据搬运。
+### 逻辑位置
+
+  | TPosition | 具体含义                                                     |
+  | --------- | ------------------------------------------------------------ |
+  | GM        | Global Memory，对应AI Core的外部存储                         |
+  | VECIN     | 用于向量计算，搬入数据的存放位置，在数据搬入Vector计算单元时使用此位置 |
+  | VECOUT    | 用于向量计算，搬出数据的存放位置，在将Vector计算单元结果搬出时使用此位置 |
+  | A1        | 用于矩阵计算，存放整块A矩阵，可类比CPU多级缓存中的二级缓存   |
+  | B1        | 用于矩阵计算，存放整块B矩阵，可类比CPU多级缓存中的二级缓存   |
+  | A2        | 用于矩阵计算，存放切分后的小块A矩阵，可类比CPU多级缓存中的一级缓存 |
+  | B2        | 用于矩阵计算，存放切分后的小块B矩阵，可类比CPU多级缓存中的一级缓存 |
+  | CO1       | 用于矩阵计算，存放小块结果C矩阵，可理解为Cube Out            |
+  | CO2       | 用于矩阵计算，存放整块结果C矩阵，可理解为Cube Out            |
+
+ 
+
+### 开发流程
+
+算子分析：分析算子的数学表达式、输入、输出以及计算逻辑的实现，明确需要调用的Ascend C接口。
+
+- 明确算子的数学表达式及计算逻辑
+
+  Add算子的数学表达式：$$z = x + y$$，计算逻辑：输入数据需要先搬入到片上存储，然后使用计算接口完成两个加法运算，得到最终结果，再搬出到外部存储
+
+- 明确输入和输出
+  
+  Add算子有两个输入：$x$ 与 $$y$$ ，输出为$$z$$。输入数据类型为half，输出数据类型与输入数据类型相同。输入支持固定shape（8，2048），输出shape与输入shape相同。输入数据排布类型为ND。
+  
+- 确定核函数名称和参数
+
+  自定义核函数名，如add_custom。
+
+- 确定算子实现所需接口
+
+  DataCopy实现
+
+  Add双目实现
+
+  使用到LocalTensor，使用Queue队列管理，会使用到EnQue，DeQue接口。
+
+核函数定义：定义Ascend C算子入口函数
+
+根据编程范式实现算子类：完成核函数的内部实现
+
+### 编程范式
+
+Ascend C编程范式把算子内部的处理程序，分成多个流水任务（Stage），以张量（Tensor）为数据载体，以队列（Queue）进行任务之间的通信同步，以内存管理模块（Pipe）管理任务间的通信内存。
+
+### SPMD模型  
+
+Ascend C算子编程是SPMD的编程，将需要处理的数据拆分并分布在多个计算核心上运行
+
+多个AI Core共享相同的指令代码，每个核上的运行实例唯一的区别是block_idx不同
+
+block的类似于进程，block_idx就是标识进程唯一性的进程ID，编程中使用函数GetBlockIdx()获取ID
+
+###   流水任务
+
+单核处理程序中主程序调度的并行任务。在核函数内部，可以通过流水任务实现数据的并行处理来提升性能。
+
+### 矢量编程流水任务设计
+
+矢量算子编程范式把算子的实现分为3个基本任务：CopyIn，Compute，CopyOut。
+
+CopyIn，Compute任务间通过VECIN队列inQueueX，inQueueY进行通信和同步，Compute，CopyOut任务间通过VECOUT队列outQueueZ进行通信和同步。
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
