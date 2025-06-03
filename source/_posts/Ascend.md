@@ -30,7 +30,32 @@ CUDA __global__ void kernel_name(argument list);
 
 ### AI Core的逻辑架构抽象
 
+- 计算单元
 
+  AI Core内异步计算过程（指令流）：
+
+  ```mermaid
+  graph TB
+  标量计算单元:读取指令序列 --> 标量计算单元:发射指令到对应单元 --> 各处理单元:并行执行指令:数据搬运,向量计算,矩阵计算
+  
+  ```
+
+  
+
+- 存储单元
+
+  - Local Memory: AI Core上的所有存储，这里的Local本地，指的是AI Core的内部；
+  - Global Memory: 无论是DDR|HBM|L2 级缓存|内存，Global指AI Core外部的存储；
+
+- 搬运单元
+
+  AI Core内部搬运过程（数据流）：
+
+  ```mermaid
+  graph TB
+  DMA:数据搬入LocalMem --> 计算单元:数据完成计算,回写LocalMem --> DMA:数据搬出到GlobalMem
+  
+  ```
 
 ### AI Core内部并行计算架构抽象
 
@@ -42,14 +67,6 @@ CUDA __global__ void kernel_name(argument list);
 
   Vector计算单元：负责执行向量计算
   
-  AI Core内异步计算过程（指令流）：
-
-  ```mermaid
-  graph TB
-  标量计算单元:读取指令序列 --> 标量计算单元:发射指令到对应单元 --> 各处理单元:并行执行指令:数据搬运,向量计算,矩阵计算
-  
-  ```
-
 - 搬运单元
 
   负责在Global Memory和Local Memory之间搬运数据
@@ -59,14 +76,6 @@ CUDA __global__ void kernel_name(argument list);
   MTE2——数据搬入单元
 
   MTE3——数据搬出单元
-
-  AI Core内部搬运过程（数据流）：
-
-  ```mermaid
-  graph TB
-  DMA:数据搬入LocalMem --> 计算单元:数据完成计算,回写LocalMem --> DMA:数据搬出到GlobalMem
-  
-  ```
 
 - 存储单元
 
