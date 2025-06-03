@@ -41,6 +41,14 @@ CUDA __global__ void kernel_name(argument list);
   Cube计算单元：负责执行矩阵计算
 
   Vector计算单元：负责执行向量计算
+  
+  AI Core内异步计算过程（指令流）：
+
+  ```mermaid
+  graph TB
+  标量计算单元:读取指令序列 --> 标量计算单元:发射指令到对应单元 --> 各处理单元:并行执行指令:数据搬运,向量计算,矩阵计算
+  
+  ```
 
 - 搬运单元
 
@@ -51,6 +59,14 @@ CUDA __global__ void kernel_name(argument list);
   MTE2——数据搬入单元
 
   MTE3——数据搬出单元
+
+  AI Core内部搬运过程（数据流）：
+
+  ```mermaid
+  graph TB
+  DMA:数据搬入LocalMem --> 计算单元:数据完成计算,回写LocalMem --> DMA:数据搬出到GlobalMem
+  
+  ```
 
 - 存储单元
 
