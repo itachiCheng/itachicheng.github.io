@@ -132,7 +132,7 @@ CUDA __global__ void kernel_name(argument list);
 
 - 明确输入和输出
   
-  Add算子有两个输入： $x$ 与 $$y$$ ，输出为$$z$$。输入数据类型为half，输出数据类型与输入数据类型相同。输入支持固定shape（8，2048），输出shape与输入shape相同。输入数据排布类型为ND。
+  Add算子有两个输入： $x$ 与 $$y$$ ，输出为 $$z$$ 。输入数据类型为half，输出数据类型与输入数据类型相同。输入支持固定shape（8，2048），输出shape与输入shape相同。输入数据排布类型为ND。
   
 - 确定核函数名称和参数
 
