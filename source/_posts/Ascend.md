@@ -283,6 +283,9 @@ workspace表示在Global Memory上申请的额外空间。
 
 
 
+### 计算类API
+
+包括标量计算API、向量计算API、矩阵计算API，分别实现调用Scalar计算单元、Vector计算单元、Cube计算单元执行计算的功能。
 
 
 ### CPU域精细调试手段：单步调试——GDB
@@ -302,9 +305,96 @@ set follow-fork-mode child
 
 在代码中直接编写AscendC::printf(...)来观察数值输出。样例代码如下：
 
+```C++
 AscendC::printf("xLocal size: %d\n", xLocal.GetSize())
+```
 
 
+- 整个Tensor参与计算
+
+- Tensor前n个数据计算
+
+- Tensor高维切分计算
+
+  功能灵活的计算API，充分发挥硬件优势，支持对每个操作数的Repeat times(迭代的次数)、Block stride（单次迭代内不同block间地址步长）、Repeat stride（相邻迭代间相同block的地址步长）、Mask（用于控制参与运算的计算单元）的操作。
+
+  - Repeat times(迭代的次数)
+
+    
+
+### 数据搬运API
+
+计算API基于Local Memory数据进行计算，所以数据需要先从Global Memory搬运至Local Memory，再使用计算API完成计算，最后从Local Memory搬出至Global Memory。比如DataCopy接口。
+
+### 内存管理API
+
+用于分配管理内存，比如AllocTensor、FreeTensor接口。任务间数据传递使用到的内存统一由**内存管理模块Pipe**进行管理。
+
+**Pipe**作为片上内存管理者，通过InitBuffer接口对外提供Queue内存初始化功能，开发者可以通过该接口为指定的**Queue**分配内存。
+
+Queue队列内存初始化完成后，需要使用内存时，通过调用**AllocTensor**来为**LocalTensor**分配内存给**Tensor**，当创建的**LocalTensor**完成相关计算无需再使用时，再调用**FreeTensor**来回收**LocalTensor**的内存。
+
+TQue是队列，对应的TPosition是VECIN，VECOUT，TBuf是缓冲（管理中间变量），对应的TPosition是VECCAL。
+
+TBuf占用的存储空间通过TPipe进行管理，您可以通过[InitBuffer](https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/apiref/ascendcopapi/atlasascendc_api_07_0110.html)接口为TBuf进行内存初始化操作，之后即可通过[Get](https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/apiref/ascendcopapi/atlasascendc_api_07_0163.html)获取指定长度的Tensor参与计算。
+
+**使用[InitBuffer](https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/apiref/ascendcopapi/atlasascendc_api_07_0110.html)为TBuf分配内存和为Queue分配内存有以下差异**：
+
+- 为TBuf分配的内存空间只能参与计算，无法执行Queue队列的入队出队操作。
+- 调用一次内存初始化接口，TPipe只会为TBuf分配一块内存，为Queue队列可以通过参数设置申请多块内存。如果要使用多个临时变量，需要定义多个TBuf数据结构，对每个TBuf数据结构分别调用[InitBuffer](https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/apiref/ascendcopapi/atlasascendc_api_07_0110.html)接口进行内存初始化。
+- TBuf获取的Tensor无需释放。
+
+### 任务同步API
+
+完成任务间的通信和同步，比如EnQue、DeQue接口。不同的API指令间有可能存在依赖关系，从硬件架构抽象可知，不同的指令异步并行执行，为了保证不同指令队列间的指令按照正确的逻辑关系执行，需要向不同的组件发送同步指令。同步控制API内部即完成这个发送同步指令的过程，开发者无需关注内部实现逻辑，使用简单的API接口即可完成。
+
+
+
+### 算子调用
+
+- ###### Kernel直调
+
+  NPU侧运行比CPU侧多了Host侧到Device侧拷贝的代码，同时，ACLRT_LAUNCH_KERNEL是异步的，需要aclrtStrem stream来进行管理。
+
+- ###### AscendCL单算子调用
+
+  - 单算子API执行（aclnn）:基于C语言的API执行算子，直接调用单算子API。多用于大模型训练算子，即整网算子模型较为固定的场景。
+
+    aclnnXxxGetWorkspaceSize(const aclTensor *src, ..., aclTensor *out，uint64_t workspaceSize，aclOpExecutor **executor);
+
+    workspaceSize：工作空间 aclMalloc
+
+  - 单算子模型执行：基于图模式执行算子，先编译算子（例如，使用ATC工具将Ascend IR定义的单算子描述文件编译成算子om模型文件），再调用AscendCL接口加载算子模型，最后调用AscendCL接口执行算子。多用于搜广推，整网模型变化较大的场景。
+
+  - Pytorch算子调用
+
+    Pytorch的适配流程，主要包括两个步骤：**算子注册分发**和**适配插件实现**。
+
+### 源码编译/二进制编译
+
+- 二进制编译
+
+  对算子kernel侧实现进行编译，生成描述算子相关文件的json文件*.json和算子二进制 *.o。如果需要直接调用算子二进制，则使用该编译方式
+
+- 源码编译
+
+  不对算子kernel侧实现进行编译，保留算子kernel源码文件 *.cpp。该方式可以支持算子的在线编译、通过ATC模型转换的方式编译算子的场景。
+
+### 形状为（1,660）的half类型输入数据，利用4核完成add计算
+
+$$1 block = 32 $$
+
+#### 处理步骤1: 32字节对齐
+
+Add的输入shape为（1，660），数据类型为half，当前输入无法对齐到一个block的大小（32B），首先需要进行数据补齐。
+
+#### 处理步骤2：按照核数（本次是4核）进行核间数据拆分
+
+上一步将输入数据，补齐为42个32B的数据块，本步骤需要将这些数据分配到4个核上进行计算，每个核上分得的数据块数量不一致。
+
+#### 处理步骤3：根据UB限制进行核内数据分批计算
+
+针对单核计算，计算核一次能够处理的数据受到UB大小的限制，因此需要根据UB大小将每个核需要处理的数据进行批次拆分。假设本次计算UB大小是1536B。
 
 
 
