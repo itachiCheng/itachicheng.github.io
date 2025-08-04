@@ -22,7 +22,7 @@ cover: graph.png
 
 - 向下取整可以保证mid在left=n-1和right=n时，不会数组越界
 
-  ![image-20250804155312453](/Users/itachi/Library/Application Support/typora-user-images/image-20250804155312453.png)
+  ![image-20250804155312453](first_max.png)
 
 ```python
 frt, lst = 0, len(nums)
@@ -39,7 +39,7 @@ while frt < lst:
 
 - 默认升序
 - 如果没有找到，假想值会出现在数组开头，蕴含第一个位置可能小于等于key，因而对left=-1进行初始化是有具体含义的——它代表-1这个越界索引可能是最后一个小于等于key的数
-- ![image-20250804160023859](/Users/itachi/Library/Application Support/typora-user-images/image-20250804160023859.png)
+- ![image-20250804160023859](last_min.png)
 - 向上取整可以保证mid在left=-1和right=0时，不会数组越界
 
 ```python
