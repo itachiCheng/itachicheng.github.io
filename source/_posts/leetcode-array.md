@@ -1,5 +1,5 @@
 ---
-title: leetcode-array
+title: 二分随笔
 date: 2022-01-05 18:48:37
 tags:
 - leetcode
@@ -12,11 +12,17 @@ cover: graph.png
 
 ### 二分法
 
+`对于升序排列的数组，存在第一个大于等于key的数，也存在最后一个小于等于key的数。`
+
 #### 寻找第一个大于等于目标值的数
 
 - 默认升序
-- 如果没有找到，假象值会导致索引越界（因为升序，所以在长度以外）
-- frt 靠近 lst，向下取整可以避免数组越界
+
+- 如果没有找到，假想值会出现在数组末尾，蕴含最后一个位置可能大于等于key，因而对right=n进行初始化是有具体含义的——它代表n这个越界索引可能是第一个大于等于key的数
+
+- 向下取整可以保证mid在left=n-1和right=n时，不会数组越界
+
+  ![image-20250804155312453](/Users/itachi/Library/Application Support/typora-user-images/image-20250804155312453.png)
 
 ```python
 frt, lst = 0, len(nums)
@@ -32,8 +38,9 @@ while frt < lst:
 #### 寻找最后一个小于等于目标值的数
 
 - 默认升序
-- 如果没有找到，假象值会导致索引越界（因为升序，所以在索引-1的位置）
-- lst靠近 frt，向上取整可以避免数组越界
+- 如果没有找到，假想值会出现在数组开头，蕴含第一个位置可能小于等于key，因而对left=-1进行初始化是有具体含义的——它代表-1这个越界索引可能是最后一个小于等于key的数
+- ![image-20250804160023859](/Users/itachi/Library/Application Support/typora-user-images/image-20250804160023859.png)
+- 向上取整可以保证mid在left=-1和right=0时，不会数组越界
 
 ```python
 frt, lst = -1, len(nums) - 1
