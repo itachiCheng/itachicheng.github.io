@@ -6,7 +6,7 @@
   <link href="https://itachicheng.github.io/atom.xml" rel="self"/>
   
   <link href="https://itachicheng.github.io/"/>
-  <updated>2025-08-04T06:37:39.026Z</updated>
+  <updated>2025-08-05T02:12:58.586Z</updated>
   <id>https://itachicheng.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Depth-First-Search</title>
+    <link href="https://itachicheng.github.io/Depth-First-Search/"/>
+    <id>https://itachicheng.github.io/Depth-First-Search/</id>
+    <published>2025-08-05T01:46:24.000Z</published>
+    <updated>2025-08-05T02:12:58.586Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="Depth-First-Search/image-20250805095815972.png" alt="image-20250805095815972"></p><p><img src="Depth-First-Search/image-20250805100428837.png" alt="image-20250805100428837"></p><p><img src="Depth-First-Search/image-20250805101123102.png" alt="image-20250805101123102"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;Depth-First-Search/image-20250805095815972.png&quot; alt=&quot;image-20250805095815972&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;Depth-First-Search/image-202508</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Diffusion-Model</title>
@@ -431,28 +452,6 @@ nohup jupyter notebook --allow-root &amp;amp;&lt;/p&gt;
     
     
     <category term="Autobiography" scheme="https://itachicheng.github.io/tags/Autobiography/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Flask</title>
-    <link href="https://itachicheng.github.io/Flask/"/>
-    <id>https://itachicheng.github.io/Flask/</id>
-    <published>2022-06-12T11:25:00.000Z</published>
-    <updated>2023-12-19T16:38:53.607Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Installation">Installation</h3><h4 id="virtual-environments">virtual environments</h4><p>​We recommend using the latest version of Python. Flask supports Python 3.7 and newer.</p><ol><li>conda create -n flask python=3.7</li><li>activate flask</li><li>jupyter notebook .</li></ol><h4 id="dependencies">dependencies</h4><ol><li>pip list</li></ol><p><img src="dependencies.PNG" alt=""></p><ol start="2"><li><p>description</p><ul><li><a href="https://palletsprojects.com/p/werkzeug/">Werkzeug</a> implements WSGI, the standard Python interface between applications and servers.</li><li><a href="https://palletsprojects.com/p/jinja/">Jinja</a> is a template language that renders the pages your application serves.</li><li><a href="https://palletsprojects.com/p/markupsafe/">MarkupSafe</a> comes with Jinja. It escapes untrusted input when rendering templates to avoid injection attacks.</li><li><a href="https://palletsprojects.com/p/itsdangerous/">ItsDangerous</a> securely signs data to ensure its integrity. This is used to protect Flask’s session cookie.</li><li><a href="https://palletsprojects.com/p/click/">Click</a> is a framework for writing command line applications. It provides the <code>flask</code> command and allows adding custom management commands.</li></ul></li><li><p>A Minimal Application</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&lt;p&gt;Hello, World!&lt;/p&gt;&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><ul><li><p>CMD</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set FLASK_APP=hello</span><br><span class="line">flask run</span><br><span class="line">* Running on http://127.0.0.1:5000/</span><br></pre></td></tr></table></figure></li><li><p>Application Discovery Behavior</p><p>Now head over to <a href="http://127.0.0.1:5000/">http://127.0.0.1:5000/</a>, and you should see your hello world greeting.</p></li><li><p>Address</p></li></ul></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;Installation&quot;&gt;Installation&lt;/h3&gt;
-&lt;h4 id=&quot;virtual-environments&quot;&gt;virtual environments&lt;/h4&gt;
-&lt;p&gt;​	We recommend using the latest version o</summary>
-      
-    
-    
-    
     
   </entry>
   
