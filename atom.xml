@@ -6,7 +6,7 @@
   <link href="https://itachicheng.github.io/atom.xml" rel="self"/>
   
   <link href="https://itachicheng.github.io/"/>
-  <updated>2025-08-05T02:33:39.938Z</updated>
+  <updated>2025-11-21T09:43:13.219Z</updated>
   <id>https://itachicheng.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Multi-Token-Prediction</title>
+    <link href="https://itachicheng.github.io/Multi-Token-Prediction/"/>
+    <id>https://itachicheng.github.io/Multi-Token-Prediction/</id>
+    <published>2025-11-21T08:22:49.000Z</published>
+    <updated>2025-11-21T09:43:13.219Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Abstract">Abstract</h3><p>论文挑战了传统LLM训练范式——<strong>仅预测下一个token</strong>。提出让模型在每个位置同时预测<strong>n个未来token</strong>，通过<strong>n个独立的输出头</strong>共享同一模型主干(shared trunk)实现。这种方法将多token预测作为<strong>辅助训练任务</strong>，在不增加训练时间开销的情况下显著提升模型性能。</p><h3 id="Method">Method</h3><ul><li>next-token prediction</li></ul><p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mn>1</mn></msub><mo>=</mo><mo>−</mo><msub><mo>∑</mo><mi>t</mi></msub><mi>log</mi><mo>⁡</mo><msub><mi>P</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><msub><mi>x</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>∣</mo><msub><mi>x</mi><mrow><mi>t</mi><mo>:</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L_1 = - \sum_{t} \log P_{\theta}(x_{t+1} \mid x_{t:1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0497em;vertical-align:-0.2997em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1308em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">:</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p><ul><li>multi-token prediction</li></ul><p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>n</mi></msub><mo>=</mo><mo>−</mo><msub><mo>∑</mo><mi>t</mi></msub><mi>log</mi><mo>⁡</mo><msub><mi>P</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><msub><mi>x</mi><mrow><mi>t</mi><mo>+</mo><mi>n</mi><mo>:</mo><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>∣</mo><msub><mi>x</mi><mrow><mi>t</mi><mo>:</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L_n = - \sum_{t} \log P_{\theta}(x_{t+n:t+1} \mid x_{t:1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0497em;vertical-align:-0.2997em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1308em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">n</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">:</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;Abstract&quot;&gt;Abstract&lt;/h3&gt;
+&lt;p&gt;论文挑战了传统LLM训练范式——&lt;strong&gt;仅预测下一个token&lt;/strong&gt;。提出让模型在每个位置同时预测&lt;strong&gt;n个未来token&lt;/strong&gt;，通过&lt;strong&gt;n个独立的输出头&lt;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Depth-First-Search</title>
@@ -421,37 +442,6 @@ nohup jupyter notebook --allow-root &amp;amp;&lt;/p&gt;
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Cookbook</title>
-    <link href="https://itachicheng.github.io/cookbook/"/>
-    <id>https://itachicheng.github.io/cookbook/</id>
-    <published>2022-08-07T03:05:14.000Z</published>
-    <updated>2025-05-30T10:56:51.121Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="蒜香虾仁技术总结（源自美食作家王刚）">蒜香虾仁技术总结（源自美食作家王刚）</h3><ul><li>鲜虾500g冰箱急冻40分钟</li></ul><ol><li>方便前段剥壳，挤出虾尾，防止壳肉粘连；</li><li>挑出虾线去除杂质；</li><li>放入盆中清洗，清洗之后将其横刀切成两片备用；</li></ol><p><img src="suanrong_1.jpg" alt=""></p><ul><li>开始腌制</li></ul><ol><li>适量料酒（约3克）；</li><li>适量生抽酱油（约3克）；</li><li>食用盐半勺；</li><li>少许胡椒粉；</li><li>适量的白糖搅拌均匀；</li><li>加入处理好的虾仁搅拌均匀，中途加入适量的玉米淀粉拌匀腌制五分钟；</li></ol><p><img src="suanrong_2.jpg" alt=""></p><ul><li>准备辅料</li></ul><ol><li>大蒜100克拍散剁碎备用，最好能剁碎一些；</li><li>准备蒜苗1根，取下蒜叶之后切碎备用；</li><li>二荆条和小米辣切碎备用；</li></ol><ul><li>开始制作</li></ul><ol><li>在锅中加入适量的清水，然后加入蒜蓉焯水，将其烧开后再捞出，目的是煮熟和去除蒜蓉里面的淀粉，防止炸糊；<br><img src="suanrong_3.jpg" alt=""></li><li>加入适量的油烧热，加入淀粉炸香炸黄，淡黄色即可捞出；</li><li>留下少许炸蒜蓉的油烧热，然后将腌制好的虾仁下锅煎熟，中途翻面；</li><li>煎熟之后加入料头和蒜蓉翻炒均匀；</li></ol><p><img src="suanrong_4.jpg" alt=""></p><ul><li>出锅装盘</li></ul><p><img src="suanrong_5.jpg" alt=""></p><h3 id="水煮肉片技术总结（改编自美食作家王刚）">水煮肉片技术总结（改编自美食作家王刚）</h3><p>此篇记录省略了“刀口辣椒”的制作。</p><ul><li>准备猪肉并腌制</li></ul><ol><li>猪里脊肉300克，切成2mm薄片放入碗中清洗两遍，去除肉片中的血水和杂质；</li><li>碗中加入食用盐一勺，加入胡椒粉一克，加入生抽酱油5克，加入料酒3克朝着一个方向搅拌两分钟；</li><li>调鸡蛋糊，碗中加入鸡蛋清一个，加入三勺土豆淀粉，搅拌均匀；</li><li>鸡蛋糊和肉片一起搅拌均匀，形成锁水的润滑膜；</li><li>加入植物油拌匀备用；</li></ol><ul><li>准备辅料</li></ul><ol><li>准备油麦菜一颗，切三段备用；</li><li>准备芹菜几根，切成小段备用；</li><li>准备蒜苗两根轻轻拍散，切成小段备用；</li><li>准备大蒜20克，切碎备用，准备生姜切片备用；</li></ol><ul><li><p>准备刀口辣椒（省略，直接用老干妈代替）</p></li><li><p>开始制作</p></li></ul><ol><li>加入适量的底油，油温6成热后加入配菜爆炒20秒，炒至断生；</li><li>再次加入适量的底油，油温6成热后加入辅料和老干妈，开大火爆炒料头爆香；</li><li>然后加入清水烧开，将腌制好的肉片下锅，烫熟之后捞出摆盘；</li><li>肉片和配菜装盘后加入适量的原汤；</li></ol><h3 id="葱香牛肉技术总结（源自美食作家王刚）">葱香牛肉技术总结（源自美食作家王刚）</h3><ul><li>主料</li></ul><ol><li>外脊牛肉（350克）<ul><li>切成8mm薄片，横竖敲打备用；<br><img src="shuizhuniurou_1.jpg" alt=""><br><img src="shuizhuniurou_2.jpg" alt=""></li><li>清洗去除血水；<br><img src="shuizhuniurou_3.jpg" alt=""></li></ul></li></ol><ul><li>辅料</li></ul><ol><li>玉米淀粉（约2克）</li><li>土豆淀粉（15克）</li><li>植物油（适量）</li><li>大葱（120克）</li><li>大红椒（1个）</li><li>生姜（25克）</li><li>大蒜（几颗）</li><li>水淀粉（适量）</li></ol><ul><li>调味料</li></ul><ol><li><p>蚝油（适量）</p></li><li><p>生抽酱油（适量）</p></li><li><p>食用盐（少许）</p></li><li><p>老抽（适量）</p><ul><li>腌制牛肉，耗油三克，生成酱油三克，食用盐1.5克，老抽三克，清水15克；<br><img src="shuizhuniurou_5.jpg" alt=""></li></ul></li></ol><h3 id="家常豆腐（懒人烧豆腐加王刚版家常豆腐）">家常豆腐（懒人烧豆腐加王刚版家常豆腐）</h3><ul><li>准备原料</li></ul><ol><li>五花肉（16yuan/斤）</li><li>蒜叶（7yuan/斤）</li><li>老豆腐（4yuan/jin）<br><img src="jiachangdoufu_2.jpg" alt=""></li></ol><ul><li>准备调料</li></ul><ol><li>生抽三克</li><li>食盐1.5克</li><li>白糖1.5克</li><li>淀粉适量<br><img src="jiachangdoufu_1.jpg" alt=""></li></ol><ul><li><p>开始制作<br><img src="jiachangdoufu_3.jpg" alt=""></p><ul><li><p>技术难点</p><p>豆腐煎6分钟后第一次翻面，非常考验对锅的控制，不少豆腐挤成一团，如上所示；</p></li></ul></li><li><p>成品展示</p></li></ul><p><img src="jiachangdoufu_4.jpg" alt=""></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;蒜香虾仁技术总结（源自美食作家王刚）&quot;&gt;蒜香虾仁技术总结（源自美食作家王刚）&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;鲜虾500g冰箱急冻40分钟&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;方便前段剥壳，挤出虾尾，防止壳肉粘连；&lt;/li&gt;
-&lt;li&gt;挑出虾线去除杂质；&lt;/li&gt;
-</summary>
-      
-    
-    
-    
-    <category term="Life" scheme="https://itachicheng.github.io/categories/Life/"/>
-    
-    
-    <category term="Autobiography" scheme="https://itachicheng.github.io/tags/Autobiography/"/>
     
   </entry>
   
