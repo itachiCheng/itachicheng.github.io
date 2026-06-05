@@ -2,6 +2,7 @@
 title: Flask
 date: 2022-06-12 19:25:00
 tags:
+cover: dependencies.PNG
 ---
 
 

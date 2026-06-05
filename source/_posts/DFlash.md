@@ -7,6 +7,7 @@ tags:
 - Diffusion Model
 categories:
 - Machine Learning
+cover: dflash-inference.svg
 ---
 
 ### Abstract

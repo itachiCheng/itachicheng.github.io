@@ -6,6 +6,7 @@ tags:
 - NLP
 categories:
 - Machine Learning
+cover: dependency_plot.svg
 ---
 
 ### Chapter I

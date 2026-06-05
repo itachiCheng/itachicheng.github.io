@@ -61,6 +61,13 @@
 
    本地 Markdown 预览会按源码目录读取 `source/_posts/DFlash/` 下的图片；部署时，`scripts/post-asset-path.js` 会在 Hexo 渲染阶段将该路径改写为文章页面下的 `./图片名`，从而匹配 Hexo 生成的 `/DFlash/图片名`。
 
+   本仓库也提供了一个 Codex skill，用于后续生成论文精读文章和 SVG 图示。其他用户可以在 clone 仓库后安装：
+
+   ```shell
+   mkdir -p ~/.codex/skills
+   cp -R skills/blog-svg-figures ~/.codex/skills/
+   ```
+
    ```shell
    git add -A
    git commit -m "Your Commit" 

@@ -5,7 +5,6 @@ tags:
 - Autobiography
 categories:
 - Yesterday
-cover: Ulchiha.png
 ---
 
 
