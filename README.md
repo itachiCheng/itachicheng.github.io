@@ -53,6 +53,14 @@
 
 2. 通过`hexo new "My New Post"`可以生成Markdown文件以及资料文件夹，资料编辑完成后，可以通过以下方式提交。
 
+   如果希望文章图片同时兼容 Markdown 本地预览和 GitHub Pages 部署，可以将图片放在同名资源目录中，并在 Markdown 中使用 `./文章名/图片名` 引用，例如：
+
+   ```markdown
+   ![DFlash inference overview](./DFlash/dflash-inference.svg)
+   ```
+
+   本地 Markdown 预览会按源码目录读取 `source/_posts/DFlash/` 下的图片；部署时，`scripts/post-asset-path.js` 会在 Hexo 渲染阶段将该路径改写为文章页面下的 `./图片名`，从而匹配 Hexo 生成的 `/DFlash/图片名`。
+
    ```shell
    git add -A
    git commit -m "Your Commit" 

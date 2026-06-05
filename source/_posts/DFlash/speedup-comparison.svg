@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #111827; }
+      .title { font-size: 24px; font-weight: 700; }
+      .axis { stroke: #334155; stroke-width: 2; }
+      .grid { stroke: #cbd5e1; stroke-width: 1; }
+      .label { font-size: 14px; fill: #334155; }
+      .value { font-size: 15px; font-weight: 700; }
+      .base { fill: #94a3b8; }
+      .eagle { fill: #60a5fa; }
+      .dflash { fill: #34d399; }
+    </style>
+  </defs>
+
+  <text x="34" y="42" class="title">Qwen3-8B average speedup and acceptance length</text>
+  <text x="34" y="69" class="label">Temperature = 0, thinking mode disabled, averaged over math/code/chat tasks</text>
+
+  <line x1="90" y1="360" x2="910" y2="360" class="axis"/>
+  <line x1="90" y1="100" x2="90" y2="360" class="axis"/>
+
+  <line x1="90" y1="308" x2="910" y2="308" class="grid"/>
+  <line x1="90" y1="256" x2="910" y2="256" class="grid"/>
+  <line x1="90" y1="204" x2="910" y2="204" class="grid"/>
+  <line x1="90" y1="152" x2="910" y2="152" class="grid"/>
+  <line x1="90" y1="100" x2="910" y2="100" class="grid"/>
+
+  <text x="58" y="365" class="label">0x</text>
+  <text x="58" y="313" class="label">1x</text>
+  <text x="58" y="261" class="label">2x</text>
+  <text x="58" y="209" class="label">3x</text>
+  <text x="58" y="157" class="label">4x</text>
+  <text x="58" y="105" class="label">5x</text>
+
+  <rect x="170" y="308" width="95" height="52" class="base"/>
+  <rect x="360" y="255" width="95" height="105" class="eagle"/>
+  <rect x="550" y="107" width="95" height="253" class="dflash"/>
+
+  <text x="193" y="300" class="value">1.00x</text>
+  <text x="383" y="247" class="value">2.02x</text>
+  <text x="573" y="99" class="value">4.86x</text>
+
+  <text x="159" y="389" class="label">Baseline</text>
+  <text x="326" y="389" class="label">EAGLE-3 tree 60</text>
+  <text x="526" y="389" class="label">DFlash block 16</text>
+
+  <rect x="735" y="125" width="185" height="100" fill="#f8fafc" stroke="#cbd5e1" rx="8"/>
+  <text x="758" y="156" class="value">Avg. tau</text>
+  <text x="758" y="185" class="label">EAGLE-3: 3.40</text>
+  <text x="758" y="211" class="label">DFlash: 6.49</text>
+</svg>

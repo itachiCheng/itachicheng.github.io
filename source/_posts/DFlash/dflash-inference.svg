@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="360" viewBox="0 0 980 360">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #111827; }
+      .title { font-size: 24px; font-weight: 700; }
+      .label { font-size: 17px; font-weight: 700; }
+      .small { font-size: 14px; fill: #334155; }
+      .box { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 8; }
+      .target { fill: #e0f2fe; stroke: #0369a1; }
+      .draft { fill: #ecfdf5; stroke: #047857; }
+      .verify { fill: #fef3c7; stroke: #b45309; }
+      .token { fill: #ffffff; stroke: #64748b; rx: 5; }
+      .mask { fill: #f1f5f9; stroke: #64748b; stroke-dasharray: 4 3; rx: 5; }
+      .arrow { stroke: #334155; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <text x="34" y="42" class="title">DFlash inference overview</text>
+
+  <rect x="35" y="82" width="210" height="94" class="box target"/>
+  <text x="58" y="117" class="label">Target LLM prefill</text>
+  <text x="58" y="145" class="small">Generate first clean token</text>
+  <text x="58" y="166" class="small">Extract hidden features</text>
+
+  <rect x="300" y="82" width="210" height="94" class="box"/>
+  <text x="326" y="117" class="label">Feature fusion</text>
+  <text x="326" y="145" class="small">Concat selected layers</text>
+  <text x="326" y="166" class="small">Project to context feature</text>
+
+  <rect x="565" y="82" width="210" height="94" class="box draft"/>
+  <text x="591" y="117" class="label">Block diffusion draft</text>
+  <text x="591" y="145" class="small">Inject context into KV</text>
+  <text x="591" y="166" class="small">Predict tokens in parallel</text>
+
+  <rect x="270" y="238" width="230" height="76" class="box verify"/>
+  <text x="300" y="273" class="label">Parallel verification</text>
+  <text x="300" y="299" class="small">Target LLM accepts prefix tokens</text>
+
+  <rect x="565" y="238" width="210" height="76" class="box"/>
+  <text x="603" y="273" class="label">Next cycle</text>
+  <text x="603" y="299" class="small">Use accepted bonus token</text>
+
+  <path d="M245 129 L300 129" class="arrow"/>
+  <path d="M510 129 L565 129" class="arrow"/>
+  <path d="M670 176 L670 222 L500 252" class="arrow"/>
+  <path d="M500 276 L565 276" class="arrow"/>
+  <path d="M775 276 C900 276 900 130 775 130" class="arrow"/>
+
+  <rect x="65" y="200" width="42" height="30" class="token"/>
+  <text x="78" y="221" class="small">p</text>
+  <rect x="113" y="200" width="42" height="30" class="token"/>
+  <text x="126" y="221" class="small">r</text>
+  <rect x="610" y="200" width="42" height="30" class="mask"/>
+  <text x="621" y="221" class="small">m</text>
+  <rect x="658" y="200" width="42" height="30" class="mask"/>
+  <text x="669" y="221" class="small">m</text>
+  <rect x="706" y="200" width="42" height="30" class="mask"/>
+  <text x="717" y="221" class="small">m</text>
+  <rect x="754" y="200" width="42" height="30" class="mask"/>
+  <text x="765" y="221" class="small">m</text>
+</svg>
