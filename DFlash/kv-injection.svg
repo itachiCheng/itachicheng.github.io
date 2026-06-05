@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #111827; }
+      .title { font-size: 24px; font-weight: 700; }
+      .label { font-size: 17px; font-weight: 700; }
+      .small { font-size: 14px; fill: #334155; }
+      .box { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 8; }
+      .target { fill: #e0f2fe; stroke: #0369a1; }
+      .draft { fill: #ecfdf5; stroke: #047857; }
+      .kv { fill: #fef3c7; stroke: #b45309; }
+      .arrow { stroke: #334155; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <text x="34" y="42" class="title">KV injection: persistent target conditioning</text>
+
+  <rect x="50" y="85" width="260" height="92" class="box target"/>
+  <text x="76" y="120" class="label">Target hidden states</text>
+  <text x="76" y="149" class="small">H(l1), H(l2), ..., H(l5)</text>
+
+  <rect x="390" y="85" width="200" height="92" class="box"/>
+  <text x="433" y="120" class="label">Projection</text>
+  <text x="423" y="149" class="small">Ht = RMSNorm(Wc[...])</text>
+
+  <rect x="685" y="85" width="230" height="92" class="box kv"/>
+  <text x="730" y="120" class="label">Shared context</text>
+  <text x="729" y="149" class="small">Extra K/V entries</text>
+
+  <path d="M310 131 L390 131" class="arrow"/>
+  <path d="M590 131 L685 131" class="arrow"/>
+
+  <rect x="105" y="250" width="180" height="76" class="box draft"/>
+  <text x="145" y="282" class="label">Draft layer 1</text>
+  <text x="132" y="307" class="small">Q from draft tokens</text>
+
+  <rect x="400" y="250" width="180" height="76" class="box draft"/>
+  <text x="440" y="282" class="label">Draft layer 2</text>
+  <text x="427" y="307" class="small">K/V include Ht</text>
+
+  <rect x="695" y="250" width="180" height="76" class="box draft"/>
+  <text x="735" y="282" class="label">Draft layer N</text>
+  <text x="722" y="307" class="small">K/V include Ht</text>
+
+  <path d="M800 177 L800 226" class="arrow"/>
+  <path d="M800 209 C690 209 650 248 580 268" class="arrow"/>
+  <path d="M800 209 C485 209 425 248 285 268" class="arrow"/>
+  <path d="M800 209 L800 250" class="arrow"/>
+  <path d="M285 288 L400 288" class="arrow"/>
+  <path d="M580 288 L695 288" class="arrow"/>
+
+  <text x="105" y="370" class="small">Target features are visible in every draft layer, instead of being fused only once at input.</text>
+</svg>
