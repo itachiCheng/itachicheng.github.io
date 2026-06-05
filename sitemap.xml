@@ -263,7 +263,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/link/index.html</loc>
+    <loc>https://itachicheng.github.io/about/index.html</loc>
     
     <lastmod>2024-06-15</lastmod>
     
@@ -281,7 +281,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/about/index.html</loc>
+    <loc>https://itachicheng.github.io/link/index.html</loc>
     
     <lastmod>2024-06-15</lastmod>
     
@@ -335,7 +335,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Pythonic/</loc>
+    <loc>https://itachicheng.github.io/SQL/</loc>
     
     <lastmod>2023-12-19</lastmod>
     
@@ -344,7 +344,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/SQL/</loc>
+    <loc>https://itachicheng.github.io/Pythonic/</loc>
     
     <lastmod>2023-12-19</lastmod>
     
@@ -389,14 +389,14 @@
 
   
   <url>
-    <loc>https://itachicheng.github.io/tags/Autobiography/</loc>
+    <loc>https://itachicheng.github.io/tags/NLP/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/tags/NLP/</loc>
+    <loc>https://itachicheng.github.io/tags/Autobiography/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -433,14 +433,14 @@
 
   
   <url>
-    <loc>https://itachicheng.github.io/categories/Yesterday/</loc>
+    <loc>https://itachicheng.github.io/categories/Machine-Learning/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/categories/Machine-Learning/</loc>
+    <loc>https://itachicheng.github.io/categories/Yesterday/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
