@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fffaf0"/>
+      <stop offset="1" stop-color="#f3f8ff"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#34485e"/>
+    </marker>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif;fill:#172333}
+      .title{font-size:30px;font-weight:700}
+      .sub{font-size:16px;fill:#586778}
+      .label{font-size:18px;font-weight:700}
+      .small{font-size:14px;fill:#586778}
+      .box{rx:12;stroke-width:2;stroke:#9caebe}
+      .line{stroke:#34485e;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .axis{stroke:#5c6f82;stroke-width:2}
+      .curve{fill:none;stroke-width:5;stroke-linecap:round}
+    </style>
+  </defs>
+  <rect width="980" height="430" fill="url(#bg)"/>
+  <text x="48" y="55" class="title">Training: teacher forcing plus base anchoring</text>
+  <text x="48" y="83" class="sub">Clean prefixes teach useful causal states; a curriculum prevents the correction branch from bypassing the backbone.</text>
+
+  <rect x="62" y="128" width="230" height="86" class="box" fill="#e8f2ff"/>
+  <text x="88" y="162" class="label">Teacher forcing</text>
+  <text x="88" y="190" class="small">GRU sees ground-truth previous tokens</text>
+  <path d="M292 171 H360" class="line"/>
+  <rect x="360" y="128" width="250" height="86" class="box" fill="#e8faef"/>
+  <text x="388" y="162" class="label">Useful causal state</text>
+  <text x="388" y="190" class="small">matches the accepted-prefix regime</text>
+  <path d="M610 171 H682" class="line"/>
+  <rect x="682" y="128" width="230" height="86" class="box" fill="#fff0c5"/>
+  <text x="710" y="162" class="label">Final logits</text>
+  <text x="710" y="190" class="small">L = Lbase + delta L</text>
+
+  <text x="78" y="274" class="label">Base-anchored objective</text>
+  <text x="78" y="302" class="small">L = (1 - lambda) Lfinal + lambda Lbase</text>
+  <line x1="90" y1="365" x2="450" y2="365" class="axis"/>
+  <line x1="90" y1="365" x2="90" y2="250" class="axis"/>
+  <path d="M100 265 C190 282 270 315 430 356" class="curve" stroke="#2f80ed"/>
+  <path d="M100 352 C190 330 285 292 430 260" class="curve" stroke="#27ae60"/>
+  <text x="116" y="255" class="small">lambda: 1 to 0</text>
+  <text x="304" y="257" class="small">final loss weight rises</text>
+  <text x="305" y="386" class="small">training step</text>
+
+  <rect x="548" y="260" width="360" height="98" class="box" fill="#ffffff" opacity=".88"/>
+  <text x="574" y="295" class="label">Why it matters</text>
+  <text x="574" y="323" class="small">Without anchoring, clean prefixes let the head shortcut the base model.</text>
+  <text x="574" y="349" class="small">With anchoring, the backbone learns first, then the head refines.</text>
+</svg>

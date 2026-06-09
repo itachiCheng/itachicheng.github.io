@@ -67,9 +67,8 @@ ignore: null
 theme: butterfly
 deploy:
   type: git
-  repo: https://github.com/itachiCheng/itachicheng.github.io.git
+  repo: git@github.com:itachiCheng/itachicheng.github.io.git
   branch: master
-  repository: git@github.com:itachiCheng/itachicheng.github.io.git
 markdown:
   plugins:
     - plugin:
