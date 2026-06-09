@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7fbff"/>
+      <stop offset="1" stop-color="#f8fff9"/>
+    </linearGradient>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif;fill:#172333}
+      .title{font-size:30px;font-weight:700}
+      .sub{font-size:16px;fill:#586778}
+      .label{font-size:16px;font-weight:700}
+      .small{font-size:13px;fill:#586778}
+      .num{font-size:22px;font-weight:700;fill:#17324d}
+      .axis{stroke:#6f8193;stroke-width:2}
+      .grid{stroke:#d7e1ea;stroke-width:1}
+    </style>
+  </defs>
+  <rect width="980" height="430" fill="url(#bg)"/>
+  <text x="48" y="55" class="title">Qwen3-8B greedy decoding: speedup and acceptance</text>
+  <text x="48" y="83" class="sub">Domino improves acceptance length over DFlash while keeping block-parallel draft cost low.</text>
+
+  <line x1="96" y1="344" x2="618" y2="344" class="axis"/>
+  <line x1="96" y1="344" x2="96" y2="124" class="axis"/>
+  <line x1="96" y1="294" x2="618" y2="294" class="grid"/>
+  <line x1="96" y1="244" x2="618" y2="244" class="grid"/>
+  <line x1="96" y1="194" x2="618" y2="194" class="grid"/>
+  <line x1="96" y1="144" x2="618" y2="144" class="grid"/>
+
+  <rect x="135" y="264" width="48" height="80" fill="#94a3b8" rx="6"/>
+  <rect x="198" y="253" width="48" height="91" fill="#64748b" rx="6"/>
+  <rect x="303" y="158" width="48" height="186" fill="#38bdf8" rx="6"/>
+  <rect x="366" y="103" width="48" height="241" fill="#0ea5e9" rx="6"/>
+  <rect x="471" y="116" width="48" height="228" fill="#34d399" rx="6"/>
+  <rect x="534" y="65" width="48" height="279" fill="#10b981" rx="6"/>
+
+  <text x="126" y="374" class="small">EAGLE-3</text>
+  <text x="142" y="393" class="small">16</text>
+  <text x="289" y="374" class="small">DFlash</text>
+  <text x="315" y="393" class="small">16</text>
+  <text x="462" y="374" class="small">Domino</text>
+  <text x="490" y="393" class="small">16</text>
+
+  <text x="126" y="252" class="small">1.97x</text>
+  <text x="195" y="241" class="small">2.97</text>
+  <text x="294" y="146" class="small">4.66x</text>
+  <text x="366" y="91" class="small">6.06</text>
+  <text x="463" y="104" class="small">5.49x</text>
+  <text x="537" y="53" class="small">7.17</text>
+
+  <rect x="660" y="126" width="250" height="172" fill="#fff" stroke="#d4e0ea" stroke-width="2" rx="14"/>
+  <circle cx="700" cy="164" r="9" fill="#38bdf8"/>
+  <text x="720" y="170" class="label">blue: speedup</text>
+  <circle cx="700" cy="205" r="9" fill="#10b981"/>
+  <text x="720" y="211" class="label">green: acceptance length</text>
+  <text x="690" y="256" class="num">5.49x avg speedup</text>
+  <text x="690" y="282" class="small">Table 1, Qwen3-8B, T = 0</text>
+</svg>

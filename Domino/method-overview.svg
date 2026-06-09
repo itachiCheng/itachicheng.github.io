@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f6fbff"/>
+      <stop offset="1" stop-color="#eef7f2"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" x2="1">
+      <stop offset="0" stop-color="#dff0ff"/>
+      <stop offset="1" stop-color="#b9dcff"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" x2="1">
+      <stop offset="0" stop-color="#dff8ea"/>
+      <stop offset="1" stop-color="#b8ebcf"/>
+    </linearGradient>
+    <linearGradient id="yellow" x1="0" x2="1">
+      <stop offset="0" stop-color="#fff3bd"/>
+      <stop offset="1" stop-color="#ffe08a"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#35506b"/>
+    </marker>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif;fill:#182536}
+      .title{font-size:30px;font-weight:700}
+      .sub{font-size:16px;fill:#526172}
+      .label{font-size:18px;font-weight:700}
+      .small{font-size:14px;fill:#526172}
+      .box{stroke:#8aa4bd;stroke-width:2;rx:12}
+      .line{stroke:#35506b;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .dash{stroke:#7890a8;stroke-width:2;stroke-dasharray:7 6;fill:none}
+      .token{fill:#fff;stroke:#8aa4bd;stroke-width:2;rx:7}
+    </style>
+  </defs>
+  <rect width="980" height="430" fill="url(#bg)"/>
+  <circle cx="840" cy="85" r="120" fill="#6ccf9d" opacity=".12"/>
+  <circle cx="110" cy="365" r="145" fill="#66a9ff" opacity=".10"/>
+  <text x="48" y="55" class="title">Domino: parallel draft + causal correction</text>
+  <text x="48" y="83" class="sub">Keep the expensive draft backbone parallel, then add a tiny prefix-dependent logit residual.</text>
+
+  <rect x="55" y="130" width="180" height="92" class="box" fill="url(#blue)"/>
+  <text x="80" y="165" class="label">Target prefix</text>
+  <text x="80" y="193" class="small">verified tokens</text>
+  <rect x="78" y="238" width="34" height="30" class="token"/>
+  <rect x="120" y="238" width="34" height="30" class="token"/>
+  <rect x="162" y="238" width="34" height="30" class="token"/>
+
+  <path d="M235 176 H320" class="line"/>
+  <rect x="320" y="112" width="235" height="135" class="box" fill="url(#green)"/>
+  <text x="350" y="148" class="label">Parallel backbone</text>
+  <text x="350" y="176" class="small">DFlash-style block drafting</text>
+  <text x="350" y="202" class="small">one forward pass for all positions</text>
+  <text x="350" y="228" class="small">base logits: Lbase</text>
+
+  <path d="M555 176 H642" class="line"/>
+  <rect x="642" y="112" width="278" height="135" class="box" fill="url(#yellow)"/>
+  <text x="672" y="148" class="label">Domino head</text>
+  <text x="672" y="176" class="small">GRU causal state from previous drafts</text>
+  <text x="672" y="202" class="small">low-rank correction head</text>
+  <text x="672" y="228" class="small">final logits: Lbase + delta L</text>
+
+  <path d="M438 247 V304 H745 V247" class="dash"/>
+  <text x="470" y="336" class="label">Decoupling</text>
+  <text x="470" y="363" class="small">causal modeling is sequential but cheap; draft-model execution stays parallel.</text>
+  <text x="470" y="389" class="small">No repeated full LM-head projection inside the draft loop.</text>
+
+  <path d="M782 247 V292 H860" class="line"/>
+  <rect x="858" y="277" width="46" height="34" class="token"/>
+  <rect x="910" y="277" width="46" height="34" class="token"/>
+  <text x="838" y="341" class="small">sample draft block</text>
+</svg>
