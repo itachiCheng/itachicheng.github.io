@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430">
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset="1" stop-color="#fff7f5"/></linearGradient><style>text{font-family:Arial,Helvetica,sans-serif;fill:#172333}.title{font-size:24px;font-weight:700}.sub{font-size:14px;fill:#586778}.label{font-size:15px;font-weight:700}.small{font-size:12px;fill:#586778}.value{font-size:30px;font-weight:700}.card{fill:#fff;stroke:#d3dfeb;stroke-width:1.6;rx:14}.bar{fill:#22a8e8}.bar2{fill:#ff9f43}.axis{stroke:#71869b;stroke-width:2}.grid{stroke:#dde7ef;stroke-width:1}</style></defs>
+  <rect width="980" height="430" fill="url(#bg)"/>
+  <text x="48" y="50" class="title">VVS speed-quality trade-off on MS-COCO</text>
+  <text x="48" y="76" class="sub">Visual AR generation with LlamaGen-XL; VVS explicitly reduces target-model forward passes.</text>
+  <rect x="80" y="126" width="250" height="190" class="card"/><text x="110" y="164" class="label">Stage I</text><text x="110" y="214" class="value">1.63x</text><text x="190" y="214" class="small">wall-clock speedup</text><text x="110" y="252" class="small">TPF 2.24, FID 24.96</text>
+  <rect x="365" y="126" width="250" height="190" class="card"/><text x="395" y="164" class="label">Stage II</text><text x="395" y="214" class="value">1.76x</text><text x="475" y="214" class="small">wall-clock speedup</text><text x="395" y="252" class="small">TPF 2.86, FID 47.19</text>
+  <rect x="650" y="126" width="250" height="190" class="card"/><text x="680" y="164" class="label">Target forwards</text><text x="680" y="214" class="value">2.8x</text><text x="752" y="214" class="small">fewer than vanilla AR</text><text x="680" y="252" class="small">quality kept competitive with relaxed SD.</text>
+  <text x="100" y="368" class="small">Ablations: uniform path sampling and dynamic truncation preserve image quality better than always choosing the highest-confidence path.</text>
+</svg>

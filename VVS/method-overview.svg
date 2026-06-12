@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500">
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f7fbff"/><stop offset="1" stop-color="#fff8f5"/></linearGradient><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#34495e"/></marker><style>text{font-family:Arial,Helvetica,sans-serif;fill:#172333}.title{font-size:24px;font-weight:700}.sub{font-size:14px;fill:#586778}.label{font-size:16px;font-weight:700}.small{font-size:12px;fill:#586778}.box{fill:#fff;stroke:#cbd9e6;stroke-width:1.8;rx:12}.blue{fill:#e7f3ff}.green{fill:#e7faef}.yellow{fill:#fff2c7}.red{fill:#ffe8e4}.line{stroke:#34495e;stroke-width:3;fill:none;marker-end:url(#arrow)}.dash{stroke:#8093a8;stroke-width:2;stroke-dasharray:6 6;fill:none}</style></defs>
+  <rect width="980" height="500" fill="url(#bg)"/>
+  <text x="48" y="48" class="title">VVS: partial verification skipping for visual AR generation</text>
+  <text x="48" y="74" class="sub">When candidate visual token paths are similar, selected drafts can bypass immediate target verification.</text>
+  <rect x="70" y="126" width="190" height="86" class="box green"/><text x="98" y="160" class="label">Draft token tree</text><text x="98" y="186" class="small">candidate visual paths</text>
+  <path d="M260 169H340" class="line"/>
+  <rect x="340" y="126" width="220" height="86" class="box yellow"/><text x="368" y="160" class="label">Skip scheduler</text><text x="368" y="186" class="small">path similarity threshold</text>
+  <path d="M560 169H640" class="line"/>
+  <rect x="640" y="126" width="250" height="86" class="box red"/><text x="668" y="160" class="label">Verification-free accept</text><text x="668" y="186" class="small">sample path, truncate length</text>
+  <path d="M765 212V284" class="line"/>
+  <rect x="570" y="284" width="320" height="92" class="box blue"/><text x="598" y="318" class="label">Post verification</text><text x="598" y="344" class="small">next target forward verifies old unverified tokens</text>
+  <path d="M570 330H470" class="line"/>
+  <rect x="110" y="284" width="360" height="92" class="box"/><text x="138" y="318" class="label">Feature cache and reuse</text><text x="138" y="344" class="small">reuse stale token-level features for the next draft</text>
+  <path d="M210 284V212" class="dash"/>
+  <text x="110" y="430" class="small">Hard rule: no two consecutive verification-free steps, limiting error accumulation.</text>
+</svg>
