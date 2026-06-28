@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="430" viewBox="0 0 920 430" role="img" aria-labelledby="title desc">
+  <title id="title">DSpark method overview</title>
+  <desc id="desc">DSpark combines a parallel backbone, a lightweight sequential head, confidence scheduling, and target verification.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#3b4754"/>
+    </marker>
+    <style>
+      .bg{fill:#fbfdff}
+      .box{fill:#fff;stroke:#a9b7c8;stroke-width:1.5;rx:8}
+      .target{fill:#eaf3ff;stroke:#4e8fd8}
+      .draft{fill:#edf8f0;stroke:#4aa66a}
+      .sched{fill:#fff6d8;stroke:#d4a72c}
+      .drop{fill:#f3f4f6;stroke:#a9b0ba}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:18px;fill:#17202a}
+      .small{font-size:14px;fill:#425466}
+      .tiny{font-size:12px;fill:#5b6b7c}
+      .token{fill:#fff;stroke:#7e8a99;rx:6}
+      .keep{fill:#e8f6ed;stroke:#4aa66a}
+      .reject{fill:#ffeceb;stroke:#d46a5d}
+      .conf{fill:#fff8df;stroke:#d4a72c}
+      .arrow{stroke:#3b4754;stroke-width:2;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="920" height="430"/>
+  <text class="txt" x="36" y="42" font-weight="700">DSpark: draft better, verify smarter</text>
+  <text class="small" x="36" y="68">Parallel generation keeps draft latency low; a sequential head fixes suffix coherence; scheduler trims low-return verification.</text>
+
+  <rect class="box target" x="46" y="112" width="165" height="92"/>
+  <text class="txt" x="72" y="145" font-weight="700">Target step</text>
+  <text class="small" x="72" y="171">prompt ABC</text>
+  <text class="small" x="72" y="191">bonus anchor D</text>
+
+  <path class="arrow" d="M211 158 H270"/>
+
+  <rect class="box draft" x="270" y="92" width="185" height="132"/>
+  <text class="txt" x="294" y="124" font-weight="700">Parallel backbone</text>
+  <text class="small" x="294" y="150">D + mask tokens</text>
+  <text class="small" x="294" y="174">one block forward</text>
+  <text class="small" x="294" y="198">base logits U1..U4</text>
+
+  <path class="arrow" d="M455 158 H510"/>
+
+  <rect class="box draft" x="510" y="92" width="180" height="132"/>
+  <text class="txt" x="536" y="124" font-weight="700">Sequential head</text>
+  <text class="small" x="536" y="150">Markov / RNN bias</text>
+  <text class="small" x="536" y="174">sample left to right</text>
+  <text class="small" x="536" y="198">tokens E F G H</text>
+
+  <path class="arrow" d="M690 158 H747"/>
+
+  <rect class="box sched" x="747" y="92" width="142" height="132"/>
+  <text class="txt" x="769" y="124" font-weight="700">Scheduler</text>
+  <text class="small" x="769" y="150">c1..c4</text>
+  <text class="small" x="769" y="174">load-aware SPS(B)</text>
+  <text class="small" x="769" y="198">keep E F G</text>
+
+  <rect class="token keep" x="260" y="280" width="58" height="48"/>
+  <rect class="token keep" x="328" y="280" width="58" height="48"/>
+  <rect class="token keep" x="396" y="280" width="58" height="48"/>
+  <rect class="token drop" x="464" y="280" width="58" height="48"/>
+  <text class="txt" x="282" y="311">E</text>
+  <text class="txt" x="350" y="311">F</text>
+  <text class="txt" x="418" y="311">G</text>
+  <text class="txt" x="486" y="311">H</text>
+  <text class="tiny" x="265" y="348">keep</text>
+  <text class="tiny" x="333" y="348">keep</text>
+  <text class="tiny" x="401" y="348">keep</text>
+  <text class="tiny" x="469" y="348">drop</text>
+
+  <path class="arrow" d="M552 304 H620"/>
+  <rect class="box target" x="620" y="260" width="180" height="96"/>
+  <text class="txt" x="650" y="292" font-weight="700">Verify prefix</text>
+  <text class="small" x="650" y="318">E,F accepted</text>
+  <text class="small" x="650" y="340">G rejected -> G*</text>
+
+  <path class="arrow" d="M710 260 C690 232 660 219 625 220"/>
+  <rect class="token reject" x="805" y="280" width="58" height="48"/>
+  <text class="txt" x="825" y="311">G*</text>
+  <text class="tiny" x="798" y="348">corrected</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420" role="img" aria-labelledby="title desc">
+  <title id="title">DSpark hardware-aware prefix scheduler</title>
+  <desc id="desc">The scheduler sorts prefix survival probabilities and admits verification tokens while expected throughput improves.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#3b4754"/>
+    </marker>
+    <style>
+      .bg{fill:#fbfdff}
+      .panel{fill:#fff;stroke:#afbbc8;stroke-width:1.5;rx:8}
+      .yellow{fill:#fff6d8;stroke:#d4a72c}
+      .blue{fill:#eaf3ff;stroke:#4e8fd8}
+      .green{fill:#edf8f0;stroke:#4aa66a}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:18px;fill:#17202a}
+      .small{font-size:14px;fill:#425466}
+      .tiny{font-size:12px;fill:#607080}
+      .arrow{stroke:#3b4754;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .bar{rx:5}
+    </style>
+  </defs>
+  <rect class="bg" width="920" height="420"/>
+  <text class="txt" x="36" y="42" font-weight="700">Confidence-scheduled verification</text>
+  <text class="small" x="36" y="68">Each draft token is useful only if its whole prefix survives and the target batch still has spare capacity.</text>
+
+  <rect class="panel blue" x="42" y="105" width="185" height="230"/>
+  <text class="txt" x="68" y="138" font-weight="700">Confidence head</text>
+  <text class="small" x="68" y="170">conditional scores</text>
+  <text class="small" x="68" y="196">c1, c2, c3, c4</text>
+  <text class="small" x="68" y="230">calibrated by STS</text>
+  <text class="tiny" x="68" y="263">raw scores rank tokens</text>
+  <text class="tiny" x="68" y="284">calibrated scores estimate</text>
+  <text class="tiny" x="68" y="305">real survival probability</text>
+
+  <path class="arrow" d="M227 220 H288"/>
+
+  <rect class="panel yellow" x="288" y="105" width="250" height="230"/>
+  <text class="txt" x="314" y="138" font-weight="700">Prefix survival</text>
+  <text class="small" x="314" y="170">a1 = c1</text>
+  <text class="small" x="314" y="196">a2 = c1 c2</text>
+  <text class="small" x="314" y="222">a3 = c1 c2 c3</text>
+  <text class="small" x="314" y="248">sort all requests by ar,j</text>
+  <text class="tiny" x="314" y="284">prefix constraint stays intact</text>
+
+  <path class="arrow" d="M538 220 H596"/>
+
+  <rect class="panel green" x="596" y="105" width="282" height="230"/>
+  <text class="txt" x="622" y="138" font-weight="700">Throughput objective</text>
+  <text class="small" x="622" y="170">B = sum(1 + lr)</text>
+  <text class="small" x="622" y="196">tau = sum expected accepts</text>
+  <text class="small" x="622" y="222">Theta = tau * SPS(B)</text>
+  <text class="small" x="622" y="254">admit while Theta improves</text>
+  <text class="tiny" x="622" y="288">under load: shorter prefixes</text>
+  <text class="tiny" x="622" y="309">under idle compute: longer prefixes</text>
+
+  <rect class="bar" x="306" y="360" width="92" height="18" fill="#4aa66a"/>
+  <rect class="bar" x="406" y="360" width="72" height="18" fill="#7fc18f"/>
+  <rect class="bar" x="486" y="360" width="50" height="18" fill="#d4a72c"/>
+  <rect class="bar" x="544" y="360" width="32" height="18" fill="#d8dee7"/>
+  <text class="tiny" x="306" y="397">high return</text>
+  <text class="tiny" x="486" y="397">borderline</text>
+  <text class="tiny" x="544" y="397">drop</text>
+</svg>

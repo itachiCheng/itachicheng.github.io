@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="430" viewBox="0 0 920 430" role="img" aria-labelledby="title desc">
+  <title id="title">DSpark result summary</title>
+  <desc id="desc">Summary of accepted length improvements and production serving gains reported by DSpark.</desc>
+  <style>
+    .bg{fill:#fbfdff}
+    .panel{fill:#fff;stroke:#afbbc8;stroke-width:1.5;rx:8}
+    .txt{font-family:Arial,Helvetica,sans-serif;font-size:18px;fill:#17202a}
+    .small{font-size:14px;fill:#425466}
+    .tiny{font-size:12px;fill:#607080}
+    .axis{stroke:#8290a0;stroke-width:1}
+    .eagle{fill:#94a3b8}
+    .dflash{fill:#78addb}
+    .dspark{fill:#4aa66a}
+    .prod{fill:#d4a72c}
+  </style>
+  <rect class="bg" width="920" height="430"/>
+  <text class="txt" x="36" y="42" font-weight="700">DSpark results at a glance</text>
+  <text class="small" x="36" y="68">Offline: longer accepted prefixes. Online: better throughput and interactivity frontier.</text>
+
+  <rect class="panel" x="42" y="100" width="530" height="285"/>
+  <text class="txt" x="70" y="135" font-weight="700">Macro accepted length gain</text>
+  <text class="small" x="70" y="160">Qwen3 targets, fixed-length verification disabled scheduler</text>
+  <line class="axis" x1="95" y1="330" x2="525" y2="330"/>
+  <line class="axis" x1="95" y1="185" x2="95" y2="330"/>
+  <text class="tiny" x="72" y="190">35%</text>
+  <text class="tiny" x="78" y="333">0</text>
+
+  <rect class="eagle" x="135" y="202" width="38" height="128"/>
+  <rect class="dflash" x="181" y="262" width="38" height="68"/>
+  <rect class="dspark" x="227" y="185" width="38" height="145"/>
+  <text class="tiny" x="130" y="351">4B</text>
+  <text class="tiny" x="128" y="371">vs Eagle 30.9%</text>
+  <text class="tiny" x="218" y="371">vs DFlash 16.3%</text>
+
+  <rect class="eagle" x="322" y="219" width="38" height="111"/>
+  <rect class="dflash" x="368" y="253" width="38" height="77"/>
+  <rect class="dspark" x="414" y="205" width="38" height="125"/>
+  <text class="tiny" x="318" y="351">8B</text>
+  <text class="tiny" x="302" y="371">26.7%</text>
+  <text class="tiny" x="409" y="371">18.4%</text>
+
+  <rect class="eagle" x="454" y="205" width="38" height="125"/>
+  <rect class="dflash" x="500" y="253" width="38" height="77"/>
+  <rect class="dspark" x="546" y="200" width="38" height="130"/>
+  <text class="tiny" x="450" y="351">14B</text>
+  <text class="tiny" x="441" y="371">30.0%</text>
+  <text class="tiny" x="542" y="371">18.3%</text>
+
+  <rect class="eagle" x="80" y="404" width="14" height="14"/>
+  <text class="tiny" x="100" y="416">over Eagle3</text>
+  <rect class="dflash" x="185" y="404" width="14" height="14"/>
+  <text class="tiny" x="205" y="416">over DFlash</text>
+  <rect class="dspark" x="295" y="404" width="14" height="14"/>
+  <text class="tiny" x="315" y="416">DSpark headline</text>
+
+  <rect class="panel" x="608" y="100" width="270" height="285"/>
+  <text class="txt" x="632" y="135" font-weight="700">Production deployment</text>
+  <text class="small" x="632" y="160">DeepSeek-V4 live traffic</text>
+  <rect class="prod" x="638" y="196" width="54" height="92"/>
+  <rect class="dspark" x="704" y="164" width="54" height="124"/>
+  <text class="tiny" x="640" y="309">Flash</text>
+  <text class="small" x="637" y="336">+51% throughput</text>
+  <text class="small" x="637" y="360">+60-85% tok/s/user</text>
+
+  <rect class="prod" x="638" y="236" width="54" height="52"/>
+  <rect class="dspark" x="704" y="195" width="54" height="93"/>
+  <text class="tiny" x="782" y="309">Pro</text>
+  <text class="small" x="637" y="224">+52% throughput at moderate SLA</text>
+  <text class="small" x="637" y="384">+57-78% tok/s/user at matched capacity</text>
+</svg>
