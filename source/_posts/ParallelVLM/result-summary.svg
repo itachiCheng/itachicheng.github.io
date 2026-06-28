@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430">
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f7fbff"/><stop offset="1" stop-color="#f8fff6"/></linearGradient><style>text{font-family:Arial,Helvetica,sans-serif;fill:#172333}.title{font-size:24px;font-weight:700}.sub{font-size:14px;fill:#586778}.label{font-size:15px;font-weight:700}.small{font-size:12px;fill:#586778}.value{font-size:28px;font-weight:700}.card{fill:#fff;stroke:#d3dfeb;stroke-width:1.6;rx:14}.bar{fill:#22a8e8}.bar2{fill:#22c483}.axis{stroke:#71869b;stroke-width:2}.grid{stroke:#dde7ef;stroke-width:1}</style></defs>
+  <rect width="980" height="430" fill="url(#bg)"/>
+  <text x="48" y="50" class="title">ParallelVLM speedups on video understanding</text>
+  <text x="48" y="76" class="sub">Training-free, lossless speculative decoding with 25K video tokens.</text>
+  <line x1="82" y1="338" x2="560" y2="338" class="axis"/><line x1="82" y1="338" x2="82" y2="126" class="axis"/>
+  <line x1="82" y1="288" x2="560" y2="288" class="grid"/><line x1="82" y1="238" x2="560" y2="238" class="grid"/><line x1="82" y1="188" x2="560" y2="188" class="grid"/>
+  <rect x="145" y="220" width="56" height="118" class="bar" rx="7"/><text x="137" y="210" class="small">2.11x</text><text x="112" y="366" class="small">LLaVA 0.5B/7B</text>
+  <rect x="315" y="126" width="56" height="212" class="bar2" rx="7"/><text x="307" y="116" class="small">3.36x</text><text x="286" y="366" class="small">LLaVA 7B/72B</text>
+  <rect x="485" y="198" width="56" height="140" class="bar" rx="7"/><text x="477" y="188" class="small">2.42x</text><text x="444" y="366" class="small">Qwen2.5 7B/32B</text>
+  <rect x="620" y="122" width="270" height="196" class="card"/>
+  <text x="650" y="160" class="label">Why it works</text>
+  <text x="650" y="194" class="small">PP hides draft prefill under target prefill.</text>
+  <text x="650" y="220" class="small">PD overlaps drafting with verification.</text>
+  <text x="650" y="246" class="small">UV-Prune keeps acceptance robust at alpha=0.9.</text>
+  <text x="650" y="284" class="value">99%+</text><text x="730" y="284" class="small">token-wise acceptance vs. lossy pruning baselines</text>
+</svg>

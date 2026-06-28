@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430">
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset="1" stop-color="#fffaf4"/></linearGradient><style>text{font-family:Arial,Helvetica,sans-serif;fill:#172333}.title{font-size:24px;font-weight:700}.sub{font-size:14px;fill:#586778}.label{font-size:15px;font-weight:700}.small{font-size:12px;fill:#586778}.value{font-size:30px;font-weight:700}.card{fill:#fff;stroke:#d3dfeb;stroke-width:1.6;rx:14}.good{fill:#22c483}.base{fill:#9fb2c7}.axis{stroke:#71869b;stroke-width:2}</style></defs>
+  <rect width="980" height="430" fill="url(#bg)"/>
+  <text x="48" y="50" class="title">Quality per network function evaluation</text>
+  <text x="48" y="76" class="sub">The method aims to reduce NFE while preserving sample diversity and quality.</text>
+  <rect x="74" y="128" width="250" height="180" class="card"/><text x="104" y="166" class="label">OpenWebText</text><text x="104" y="214" class="value">5.12</text><text x="174" y="214" class="small">GPT2 NLL at 64 NFE</text><text x="104" y="252" class="small">Masked diffusion: 5.27</text><text x="104" y="278" class="small">Entropy remains similar.</text>
+  <rect x="364" y="128" width="250" height="180" class="card"/><text x="394" y="166" class="label">Text8</text><text x="394" y="214" class="value">2x</text><text x="452" y="214" class="small">lower NFE at low-NFE range</text><text x="394" y="252" class="small">Higher spelling accuracy than MDM baseline.</text>
+  <rect x="654" y="128" width="250" height="180" class="card"/><text x="684" y="166" class="label">Protein sequences</text><text x="684" y="214" class="value">2x</text><text x="742" y="214" class="small">speedup for high pLDDT</text><text x="684" y="252" class="small">Only one causal block added to frozen ESM2 model.</text>
+  <line x1="104" y1="360" x2="876" y2="360" class="axis"/><text x="104" y="390" class="small">Main lesson: replace factorized multi-token reveals with speculative sampling from a stronger non-factorized target.</text>
+</svg>

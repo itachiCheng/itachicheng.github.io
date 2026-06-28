@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430">
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset="1" stop-color="#f7fff6"/></linearGradient><style>text{font-family:Arial,Helvetica,sans-serif;fill:#172333}.title{font-size:24px;font-weight:700}.sub{font-size:14px;fill:#586778}.label{font-size:15px;font-weight:700}.small{font-size:12px;fill:#586778}.value{font-size:28px;font-weight:700}.card{fill:#fff;stroke:#d3dfeb;stroke-width:1.6;rx:14}.bar1{fill:#9fb2c7}.bar2{fill:#31a8e8}.bar3{fill:#24c083}.axis{stroke:#71869b;stroke-width:2}.grid{stroke:#dde7ef;stroke-width:1}</style></defs>
+  <rect width="980" height="430" fill="url(#bg)"/>
+  <text x="48" y="50" class="title">Draft-OPD results on Qwen3</text>
+  <text x="48" y="76" class="sub">Matched training FLOPs. Thinking mode enabled, temperature 0, average across seven benchmarks.</text>
+  <line x1="86" y1="332" x2="602" y2="332" class="axis"/><line x1="86" y1="332" x2="86" y2="122" class="axis"/>
+  <line x1="86" y1="282" x2="602" y2="282" class="grid"/><line x1="86" y1="232" x2="602" y2="232" class="grid"/><line x1="86" y1="182" x2="602" y2="182" class="grid"/>
+  <rect x="142" y="156" width="58" height="176" class="bar1" rx="7"/><text x="136" y="146" class="small">4.06x</text><text x="128" y="360" class="small">EAGLE-3</text>
+  <rect x="304" y="142" width="58" height="190" class="bar2" rx="7"/><text x="301" y="132" class="small">4.34x</text><text x="311" y="360" class="small">DFlash</text>
+  <rect x="466" y="120" width="58" height="212" class="bar3" rx="7"/><text x="463" y="110" class="small">4.89x</text><text x="462" y="360" class="small">Draft-OPD</text>
+  <rect x="650" y="126" width="250" height="188" class="card"/>
+  <text x="680" y="162" class="label">Qwen3-8B thinking</text><text x="680" y="198" class="value">5.73</text><text x="747" y="198" class="small">avg accepted length</text>
+  <text x="680" y="238" class="value">+13%</text><text x="762" y="238" class="small">vs. DFlash speedup</text>
+  <text x="680" y="278" class="small">SGLang throughput also improves by 6%-17% across tasks and concurrency.</text>
+</svg>

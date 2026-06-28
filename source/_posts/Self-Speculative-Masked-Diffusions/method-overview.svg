@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500">
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset="1" stop-color="#f8fff7"/></linearGradient><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#34495e"/></marker><style>text{font-family:Arial,Helvetica,sans-serif;fill:#172333}.title{font-size:24px;font-weight:700}.sub{font-size:14px;fill:#586778}.label{font-size:16px;font-weight:700}.small{font-size:12px;fill:#586778}.box{fill:#fff;stroke:#cbd9e6;stroke-width:1.8;rx:12}.blue{fill:#e7f3ff}.green{fill:#e7faef}.yellow{fill:#fff2c7}.line{stroke:#34495e;stroke-width:3;fill:none;marker-end:url(#arrow)}.token{fill:#fff;stroke:#9fb0c3;stroke-width:1.4;rx:6}</style></defs>
+  <rect width="980" height="500" fill="url(#bg)"/>
+  <text x="48" y="48" class="title">Self-speculative masked diffusions</text>
+  <text x="48" y="74" class="sub">Use non-causal masked diffusion as draft, then causal layers verify a non-factorized target distribution.</text>
+  <rect x="80" y="130" width="230" height="96" class="box blue"/><text x="108" y="164" class="label">Non-causal blocks</text><text x="108" y="190" class="small">factorized logits over masked positions</text>
+  <path d="M310 178H390" class="line"/>
+  <rect x="390" y="130" width="230" height="96" class="box green"/><text x="418" y="164" class="label">Draft tokens</text><text x="418" y="190" class="small">sample many positions at once</text>
+  <path d="M620 178H700" class="line"/>
+  <rect x="700" y="130" width="210" height="96" class="box yellow"/><text x="728" y="164" class="label">Causal blocks</text><text x="728" y="190" class="small">parallel speculative validation</text>
+  <rect x="130" y="290" width="720" height="88" class="box"/>
+  <text x="160" y="324" class="label">Hybrid architecture</text>
+  <text x="160" y="350" class="small">A residual connection lets the causal target improve over the non-causal draft while keeping their distributions aligned.</text>
+  <rect x="180" y="410" width="44" height="28" class="token"/><rect x="238" y="410" width="44" height="28" class="token"/><rect x="296" y="410" width="44" height="28" class="token"/><text x="370" y="430" class="small">accepted draft tokens reveal multiple masked positions per network evaluation</text>
+</svg>
