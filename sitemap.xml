@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://itachicheng.github.io/DSpark/</loc>
+    <loc>https://itachicheng.github.io/Self-Speculative-Masked-Diffusions/</loc>
     
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,16 +13,7 @@
   <url>
     <loc>https://itachicheng.github.io/VVS/</loc>
     
-    <lastmod>2026-06-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://itachicheng.github.io/Self-Speculative-Masked-Diffusions/</loc>
-    
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -31,7 +22,7 @@
   <url>
     <loc>https://itachicheng.github.io/ParallelVLM/</loc>
     
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -40,7 +31,16 @@
   <url>
     <loc>https://itachicheng.github.io/Draft-OPD/</loc>
     
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/DSpark/</loc>
+    
+    <lastmod>2026-10-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -49,7 +49,34 @@
   <url>
     <loc>https://itachicheng.github.io/Domino/</loc>
     
-    <lastmod>2026-06-09</lastmod>
+    <lastmod>2026-10-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/CC-Zcode-Installation/</loc>
+    
+    <lastmod>2026-10-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/Linear-Transformers/</loc>
+    
+    <lastmod>2026-08-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/Kimi-Linear/</loc>
+    
+    <lastmod>2026-08-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -164,7 +191,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Flask/</loc>
+    <loc>https://itachicheng.github.io/Git/</loc>
     
     <lastmod>2026-06-05</lastmod>
     
@@ -173,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Git/</loc>
+    <loc>https://itachicheng.github.io/Flask/</loc>
     
     <lastmod>2026-06-05</lastmod>
     
@@ -317,7 +344,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/about/index.html</loc>
+    <loc>https://itachicheng.github.io/link/index.html</loc>
     
     <lastmod>2024-06-15</lastmod>
     
@@ -335,7 +362,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/link/index.html</loc>
+    <loc>https://itachicheng.github.io/about/index.html</loc>
     
     <lastmod>2024-06-15</lastmod>
     
@@ -407,7 +434,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Linux-History/</loc>
+    <loc>https://itachicheng.github.io/Memory-HangZhou/</loc>
     
     <lastmod>2023-12-19</lastmod>
     
@@ -416,7 +443,7 @@
   </url>
   
   <url>
-    <loc>https://itachicheng.github.io/Memory-HangZhou/</loc>
+    <loc>https://itachicheng.github.io/Linux-History/</loc>
     
     <lastmod>2023-12-19</lastmod>
     
@@ -436,127 +463,155 @@
 
   <url>
     <loc>https://itachicheng.github.io/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>https://itachicheng.github.io/tags/leetcode/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://itachicheng.github.io/tags/Autobiography/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/NLP/</loc>
-    <lastmod>2026-06-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://itachicheng.github.io/tags/leetcode/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/Paper-Reading/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/Speculative-Decoding/</loc>
-    <lastmod>2026-06-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://itachicheng.github.io/tags/Diffusion-Model/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/Semi-Autoregressive-Generation/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/LLM-Serving/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/tags/Diffusion-Model/</loc>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/On-Policy-Distillation/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/Parallel-Drafting/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/Causal-Modeling/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/tags/Linear-Attention/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/tags/Long-Context/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/tags/LLM-Architecture/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/tags/Fast-Weight/</loc>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/Video-LLM/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/Visual-Token-Pruning/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/Masked-Diffusion/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/Speculative-Sampling/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/Discrete-Generation/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/tags/Visual-Autoregressive-Generation/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -564,71 +619,71 @@
 
   
   <url>
+    <loc>https://itachicheng.github.io/categories/Coding/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://itachicheng.github.io/categories/Yesterday/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/categories/Machine-Learning/</loc>
-    <lastmod>2026-06-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://itachicheng.github.io/categories/Coding/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/categories/Software-Engineering/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/categories/Docker/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/categories/Computer-History/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/categories/SQL/</loc>
-    <lastmod>2026-06-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://itachicheng.github.io/categories/Tool/</loc>
-    <lastmod>2026-06-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://itachicheng.github.io/categories/Data-Mining/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://itachicheng.github.io/categories/Life/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/categories/Tool/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://itachicheng.github.io/categories/Data-Mining/</loc>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

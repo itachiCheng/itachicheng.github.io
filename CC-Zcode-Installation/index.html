@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CC-Installation | 图灵先生的光</title><meta name="author" content="ChengQiang"><meta name="copyright" content="ChengQiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Claude Code 安装准备 Node.js安装地址: Windows 选用 Windows 安装程序（.msi）&amp;#x2F; MacOS选用 macOS 安装程序（.pkg） 安装验证 Windows&amp;#x2F;MacOS 1234npm -v11.19.0node -vv24.21.0 Config配置 编辑."><link rel="shortcut icon" href="/img/Ulchiha.png"><link rel="canonical" href="https://itachicheng.github.io/CC-Zcode-Installation/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.14.0-b3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.35/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>(()=>{
+      const saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+      
+      window.btf = {
+        saveToLocal: saveToLocal,
+        getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = url
+          script.async = true
+          script.onerror = reject
+          script.onload = script.onreadystatechange = function() {
+            const loadState = this.readyState
+            if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+            script.onload = script.onreadystatechange = null
+            resolve()
+          }
+
+          Object.keys(attr).forEach(key => {
+            script.setAttribute(key, attr[key])
+          })
+
+          document.head.appendChild(script)
+        }),
+
+        getCSS: (url, id = false) => new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+          link.rel = 'stylesheet'
+          link.href = url
+          if (id) link.id = id
+          link.onerror = reject
+          link.onload = link.onreadystatechange = function() {
+            const loadState = this.readyState
+            if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+            link.onload = link.onreadystatechange = null
+            resolve()
+          }
+          document.head.appendChild(link)
+        }),
+
+        addGlobalFn: (key, fn, name = false, parent = window) => {
+          const pjaxEnable = false
+          if (!pjaxEnable && key.startsWith('pjax')) return
+
+          const globalFn = parent.globalFn || {}
+          const keyObj = globalFn[key] || {}
+    
+          if (name && keyObj[name]) return
+    
+          name = name || Object.keys(keyObj).length
+          keyObj[name] = fn
+          globalFn[key] = keyObj
+          parent.globalFn = globalFn
+        }
+      }
+    
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+      
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })()</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CC-Installation',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-10-08 17:08:51'
+}</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="图灵先生的光" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/loopy2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="图灵先生的光"><span class="site-name">图灵先生的光</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">CC-Installation</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-10-08T07:34:19.000Z" title="Created 2026-10-08 15:34:19">2026-10-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-10-08T09:08:51.670Z" title="Updated 2026-10-08 17:08:51">2026-10-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CC-Installation"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Claude-Code">Claude Code</h2>
+<h3 id="安装准备">安装准备</h3>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download">Node.js安装地址</a>: Windows 选用 Windows 安装程序（.msi）/ MacOS选用 macOS 安装程序（.pkg）</p>
+<h3 id="安装验证">安装验证</h3>
+<h4 id="Windows-MacOS">Windows/MacOS</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br><span class="line">11.19.0</span><br><span class="line">node -v</span><br><span class="line">v24.21.0</span><br></pre></td></tr></table></figure>
+<h3 id="Config配置">Config配置</h3>
+<h4 id="编辑-claude-json">编辑.claude.json</h4>
+<p>windows: 编辑<code>C:\Users\&lt;用户名&gt;\.claude.json</code>, 加入字段<code>hasCompletedOnboarding: true</code><br>
+mac: 编辑<code>~/.claude.json</code>, 加入字段<code>hasCompletedOnboarding: true</code></p>
+<h3 id="新增settings-json">新增settings.json</h3>
+<p>windows: 新增<code>C:\Users\&lt;用户名&gt;\.claude\settings.json</code>并编辑<br>
+mac: 新增<code>~/.claude/settings.json</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;env&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;ANTHROPIC_BASE_URL&quot;</span>: <span class="string">&quot;https://st8tp3ajl0df3n8b8l8qu.apigateway-cn-beijing.volceapi.com/compatible&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ANTHROPIC_AUTH_TOKEN&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;API_TIMEOUT_MS&quot;</span>: <span class="string">&quot;3000000&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ANTHROPIC_MODEL&quot;</span>: <span class="string">&quot;glm-5.3&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ANTHROPIC_SMALL_FAST_MODEL&quot;</span>: <span class="string">&quot;glm-5.3&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ANTHROPIC_DEFAULT_SONNET_MODEL&quot;</span>: <span class="string">&quot;glm-5.3&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ANTHROPIC_DEFAULT_OPUS_MODEL&quot;</span>: <span class="string">&quot;glm-5.3&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ANTHROPIC_DEFAULT_HAIKU_MODEL&quot;</span>: <span class="string">&quot;glm-5.3&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;CLAUDE_CODE_MAX_CONTEXT_TOKENS&quot;</span>: <span class="string">&quot;1000000&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;CLAUDE_CODE_AUTO_COMPACT_WINDOW&quot;</span>: <span class="string">&quot;1000000&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;permissions&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;allow&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;Bash(mvn:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(git:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(java:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(javac:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(jar:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(dir:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(ls:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(cd:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(find:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(sed:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(mkdir:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(echo:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(cat:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(type:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(scp:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(ssh-copy-id:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Read(**)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Grep&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Glob&quot;</span>,</span><br><span class="line">      <span class="string">&quot;LS&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Edit&quot;</span>,</span><br><span class="line">      <span class="string">&quot;NotebookRead&quot;</span>,</span><br><span class="line">      <span class="string">&quot;mcp__playwright__browser_click&quot;</span>,</span><br><span class="line">      <span class="string">&quot;mcp__playwright__browser_close&quot;</span>,</span><br><span class="line">      <span class="string">&quot;mcp__playwright__browser_install&quot;</span>,</span><br><span class="line">      <span class="string">&quot;mcp__playwright__browser_navigate&quot;</span>,</span><br><span class="line">      <span class="string">&quot;mcp__playwright__browser_snapshot&quot;</span>,</span><br><span class="line">      <span class="string">&quot;mcp__playwright__browser_tab_list&quot;</span>,</span><br><span class="line">      <span class="string">&quot;mcp__playwright__browser_tab_new&quot;</span>,</span><br><span class="line">      <span class="string">&quot;mcp__playwright__browser_take_screenshot&quot;</span>,</span><br><span class="line">      <span class="string">&quot;mcp__playwright__browser_type&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;deny&quot;</span>: [],</span><br><span class="line">    <span class="attr">&quot;ask&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;Bash(git push:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(rm:*)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Bash(del:*)&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;defaultMode&quot;</span>: <span class="string">&quot;default&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;skipWebFetchPreflight&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;skipDangerousModePermissionPrompt&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;theme&quot;</span>: <span class="string">&quot;dark&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;tui&quot;</span>: <span class="string">&quot;fullscreen&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，ANTHROPIC_AUTH_TOKEN 为授权获得的APIKEY。</p>
+<h3 id="启动运行">启动运行</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">claude</span><br></pre></td></tr></table></figure>
+<h3 id="切换模型">切换模型</h3>
+<p>GLM5.3: <code>glm-5.3</code>;</p>
+<p>DeepSeek V4 Flash: <code>deepseek-v4-flash</code>;</p>
+<p>DeepSeek V4 Pro: <code>deepseek-v4-pro</code></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://itachicheng.github.io">ChengQiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://itachicheng.github.io/CC-Zcode-Installation/">https://itachicheng.github.io/CC-Zcode-Installation/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/Linear-Transformers/" title="Linear Transformers Are Secretly Fast Weight Programmers"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next</div><div class="next_info">Linear Transformers Are Secretly Fast Weight Programmers</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/loopy2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ChengQiang</div><div class="author-info__description">The only way to do great work is to love what you do. Keep looking, and don't settle.</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/itachiCheng"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Claude-Code"><span class="toc-number">1.</span> <span class="toc-text">Claude Code</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">安装准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%AA%8C%E8%AF%81"><span class="toc-number">1.2.</span> <span class="toc-text">安装验证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows-MacOS"><span class="toc-number">1.2.1.</span> <span class="toc-text">Windows&#x2F;MacOS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Config%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.</span> <span class="toc-text">Config配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%BE%91-claude-json"><span class="toc-number">1.3.1.</span> <span class="toc-text">编辑.claude.json</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%A2%9Esettings-json"><span class="toc-number">1.4.</span> <span class="toc-text">新增settings.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E8%BF%90%E8%A1%8C"><span class="toc-number">1.5.</span> <span class="toc-text">启动运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.6.</span> <span class="toc-text">切换模型</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/CC-Zcode-Installation/" title="CC-Installation"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CC-Installation"/></a><div class="content"><a class="title" href="/CC-Zcode-Installation/" title="CC-Installation">CC-Installation</a><time datetime="2026-10-08T07:34:19.000Z" title="Created 2026-10-08 15:34:19">2026-10-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Linear-Transformers/" title="Linear Transformers Are Secretly Fast Weight Programmers"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linear Transformers Are Secretly Fast Weight Programmers"/></a><div class="content"><a class="title" href="/Linear-Transformers/" title="Linear Transformers Are Secretly Fast Weight Programmers">Linear Transformers Are Secretly Fast Weight Programmers</a><time datetime="2026-08-12T05:00:00.000Z" title="Created 2026-08-12 13:00:00">2026-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Kimi-Linear/" title="Kimi Linear"><img src="/Kimi-Linear/method-overview.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kimi Linear"/></a><div class="content"><a class="title" href="/Kimi-Linear/" title="Kimi Linear">Kimi Linear</a><time datetime="2026-08-12T04:00:00.000Z" title="Created 2026-08-12 12:00:00">2026-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/DSpark/" title="DSpark"><img src="/DSpark/method-overview.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DSpark"/></a><div class="content"><a class="title" href="/DSpark/" title="DSpark">DSpark</a><time datetime="2026-06-28T03:40:00.000Z" title="Created 2026-06-28 11:40:00">2026-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/VVS/" title="VVS"><img src="/VVS/method-overview.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="VVS"/></a><div class="content"><a class="title" href="/VVS/" title="VVS">VVS</a><time datetime="2026-06-12T02:40:00.000Z" title="Created 2026-06-12 10:40:00">2026-06-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By ChengQiang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.14.0-b3"></script><script src="/js/main.js?v=4.14.0-b3"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.35/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

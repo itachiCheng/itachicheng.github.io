@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420" role="img" aria-labelledby="title desc">
+  <title id="title">Kimi Delta Attention mechanism</title>
+  <desc id="desc">KDA updates a fixed-size recurrent memory with channel-wise decay and delta-rule correction.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .title { font-size: 20px; font-weight: 700; }
+      .label { font-size: 16px; font-weight: 700; }
+      .small { font-size: 13px; fill: #475569; }
+      .formula { font-size: 18px; font-family: "SFMono-Regular", Consolas, monospace; }
+      .box { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; rx: 8; }
+      .blue { fill: #dbeafe; stroke: #2563eb; }
+      .green { fill: #dcfce7; stroke: #16a34a; }
+      .yellow { fill: #fef3c7; stroke: #ca8a04; }
+      .line { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="24" y="26" width="872" height="368" class="box"/>
+  <text x="460" y="62" text-anchor="middle" class="title">Kimi Delta Attention: finer memory control than GDN</text>
+
+  <rect x="70" y="118" width="150" height="88" class="yellow"/>
+  <text x="145" y="150" text-anchor="middle" class="label">Old state</text>
+  <text x="145" y="176" text-anchor="middle" class="formula">S<tspan baseline-shift="sub" font-size="12">t-1</tspan></text>
+
+  <rect x="282" y="94" width="170" height="136" class="green"/>
+  <text x="367" y="126" text-anchor="middle" class="label">Channel-wise gate</text>
+  <text x="367" y="153" text-anchor="middle" class="formula">Diag(alpha<tspan baseline-shift="sub" font-size="12">t</tspan>)</text>
+  <text x="367" y="180" text-anchor="middle" class="small">each feature dimension</text>
+  <text x="367" y="200" text-anchor="middle" class="small">gets its own forget rate</text>
+
+  <rect x="514" y="94" width="170" height="136" class="blue"/>
+  <text x="599" y="126" text-anchor="middle" class="label">Delta correction</text>
+  <text x="599" y="153" text-anchor="middle" class="formula">I - beta kk^T</text>
+  <text x="599" y="180" text-anchor="middle" class="small">erase conflicting</text>
+  <text x="599" y="200" text-anchor="middle" class="small">key-value mappings</text>
+
+  <rect x="746" y="118" width="120" height="88" class="yellow"/>
+  <text x="806" y="150" text-anchor="middle" class="label">New state</text>
+  <text x="806" y="176" text-anchor="middle" class="formula">S<tspan baseline-shift="sub" font-size="12">t</tspan></text>
+
+  <path d="M220 162 H274" class="line"/>
+  <path d="M452 162 H506" class="line"/>
+  <path d="M684 162 H738" class="line"/>
+
+  <rect x="196" y="282" width="528" height="72" class="box"/>
+  <text x="460" y="312" text-anchor="middle" class="formula">S_t = (I - beta_t k_t k_t^T) Diag(alpha_t) S_{t-1} + beta_t k_t v_t^T</text>
+  <text x="460" y="338" text-anchor="middle" class="small">Fixed recurrent state during decoding, chunkwise parallel form during training</text>
+</svg>

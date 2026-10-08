@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420" role="img" aria-labelledby="title desc">
+  <title id="title">Kimi Linear result summary</title>
+  <desc id="desc">Summary of quality, memory, and throughput results compared with MLA and GDN-H.</desc>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+    .title { font-size: 20px; font-weight: 700; }
+    .label { font-size: 15px; font-weight: 700; }
+    .small { font-size: 13px; fill: #475569; }
+    .axis { stroke: #94a3b8; stroke-width: 1.5; }
+    .grid { stroke: #e2e8f0; stroke-width: 1; }
+    .blue { fill: #2563eb; }
+    .green { fill: #16a34a; }
+    .yellow { fill: #ca8a04; }
+    .slate { fill: #64748b; }
+    .box { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; rx: 8; }
+  </style>
+
+  <rect x="24" y="26" width="872" height="368" class="box"/>
+  <text x="460" y="62" text-anchor="middle" class="title">Quality and efficiency summary</text>
+
+  <text x="185" y="104" text-anchor="middle" class="label">Short-context MMLU-Pro</text>
+  <line x1="78" y1="250" x2="292" y2="250" class="axis"/>
+  <line x1="78" y1="130" x2="78" y2="250" class="axis"/>
+  <line x1="78" y1="210" x2="292" y2="210" class="grid"/>
+  <line x1="78" y1="170" x2="292" y2="170" class="grid"/>
+  <rect x="105" y="166.7" width="38" height="83.3" class="slate"/>
+  <rect x="165" y="160.5" width="38" height="89.5" class="green"/>
+  <rect x="225" y="130" width="38" height="120" class="blue"/>
+  <text x="124" y="266" text-anchor="middle" class="small">MLA</text>
+  <text x="184" y="266" text-anchor="middle" class="small">GDN-H</text>
+  <text x="244" y="266" text-anchor="middle" class="small">Kimi</text>
+  <text x="124" y="158" text-anchor="middle" class="small">47.2</text>
+  <text x="184" y="152" text-anchor="middle" class="small">47.9</text>
+  <text x="244" y="122" text-anchor="middle" class="small">51.0</text>
+
+  <text x="460" y="104" text-anchor="middle" class="label">Long-context average</text>
+  <line x1="353" y1="250" x2="567" y2="250" class="axis"/>
+  <line x1="353" y1="130" x2="353" y2="250" class="axis"/>
+  <line x1="353" y1="210" x2="567" y2="210" class="grid"/>
+  <line x1="353" y1="170" x2="567" y2="170" class="grid"/>
+  <rect x="380" y="176.5" width="38" height="73.5" class="slate"/>
+  <rect x="440" y="184.0" width="38" height="66.0" class="green"/>
+  <rect x="500" y="130" width="38" height="120" class="blue"/>
+  <text x="399" y="266" text-anchor="middle" class="small">MLA</text>
+  <text x="459" y="266" text-anchor="middle" class="small">GDN-H</text>
+  <text x="519" y="266" text-anchor="middle" class="small">Kimi</text>
+  <text x="399" y="168" text-anchor="middle" class="small">52.2</text>
+  <text x="459" y="176" text-anchor="middle" class="small">51.2</text>
+  <text x="519" y="122" text-anchor="middle" class="small">54.5</text>
+
+  <text x="735" y="104" text-anchor="middle" class="label">1M context efficiency</text>
+  <rect x="646" y="138" width="178" height="50" class="blue" opacity="0.12" stroke="#2563eb" stroke-width="2" rx="8"/>
+  <text x="735" y="169" text-anchor="middle" class="label">up to 75% less KV cache</text>
+  <rect x="646" y="210" width="178" height="50" class="yellow" opacity="0.16" stroke="#ca8a04" stroke-width="2" rx="8"/>
+  <text x="735" y="241" text-anchor="middle" class="label">up to 6x decode throughput</text>
+
+  <text x="460" y="330" text-anchor="middle" class="small">The paper compares identical training recipes across MLA, GDN-H, and Kimi Linear.</text>
+  <text x="460" y="352" text-anchor="middle" class="small">Kimi Linear is positioned as a drop-in attention replacement, not only an efficiency-only variant.</text>
+</svg>
